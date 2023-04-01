@@ -43,7 +43,7 @@ public class Gen : IDataGenerator
         using (var httpClient = new HttpClient())
         {
 
-            var resp = httpClient.PostAsync(@"https://localhost:7050/adddiarea/", json);
+            var resp = httpClient.PostAsync(@"https://localhost:7050/adddiarea", json);
             Console.WriteLine(resp.Result);
         }
 
