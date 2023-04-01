@@ -59,9 +59,11 @@ img {
     background-color: rgb(83, 136, 107);
 }
 
-.upload-container:hover > img{
-    animation: anim linear 1s;
-}
+    .upload-container:hover > img {
+        animation: anim linear 0.2s;
+        animation-fill-mode: forwards;
+    }
+
 @keyframes anim{
     from {
         transform: translateY(0em);
