@@ -37,9 +37,10 @@ namespace Monitoring.Controllers
 
         }
 
+
         public IActionResult AddParameterToArea(GigaModel gm)
         {
-            AreaParam ap = new AreaParam() { area = gm.area, type = new Models.Type() { name = gm.name}, min = gm.min, max = gm.max };
+            AreaParam ap = new AreaParam() { area = new Area() { name = gm.areaName}, type = new Models.Type() { name = gm.name}, min = gm.min, max = gm.max };
                 _resourceService.AddParameterToArea(ap);
             return Redirect("/");
         }

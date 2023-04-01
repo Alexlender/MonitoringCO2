@@ -2,6 +2,8 @@
 {
     public class GigaModel
     {
+
+        public string areaName { get; set; }
         public Area area { get; set; }
         public Type type { get; set; }
         public float min { get; set; }
