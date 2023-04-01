@@ -23,7 +23,7 @@ namespace Monitoring.Controllers
         {
             Console.WriteLine("Button test");
             SqlBackup.backup_db();
-            return View();
+            return Redirect("/");
         }
 
         public IActionResult Index()
