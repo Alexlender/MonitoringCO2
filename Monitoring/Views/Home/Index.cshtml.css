@@ -9,12 +9,15 @@
 }
 
 .areas-list {
-    border: 2px dashed green;
-    display: grid;
-    grid-template-rows: auto;
-}
 
+    display: grid;
+    grid-template-rows: 90% auto;
+}
+.button{
+    border: 2px solid black;
+}
 .upload-container {
+    border: 2px dashed green;
     display: grid;
     grid-template-rows: auto;
 }
@@ -28,6 +31,7 @@
 }
 
 .file-area input[type=file] {
+    border
     position: absolute;
     width: 100%;
     height: 100%;
