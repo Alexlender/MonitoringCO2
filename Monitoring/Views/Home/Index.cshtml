@@ -56,16 +56,14 @@
       <ul>
         @foreach(var area in db.GetAreas())
         {
-
-                <li>@area.Name - @area.Description
-                    <ul class="params">
-                        <li>фыв 1</li>
-                        <li>фыв 2</li>
-                        <li>фыв 3</li>
+                <li>
+                    @area.Name - @area.Description
+                    <ul class="params list-group">
+                            <li class="list-group-item">фыв 1</li>
+                            <li class="list-group-item">фыв 2</li>
+                            <li class="list-group-item">фыв 3</li>
                     </ul>
                 </li>
-                
-
         }
         </ul>
 
