@@ -8,6 +8,12 @@ namespace Monitoring.Services
     {
         private DataContext db = new DataContext();
 
+        public void AddArea(Area Area)
+        {
+            db.Areas.Add(Area);
+            db.SaveChangesAsync();
+        }
+
         public void AddDiarea(Diarea diarea)
         {
             if (db.Areas.AsEnumerable().Where(a => a.Name == diarea.area.Name).ToList().Count == 1)

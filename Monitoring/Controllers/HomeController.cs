@@ -39,7 +39,8 @@ namespace Monitoring.Controllers
 
         public IActionResult AddArea(Area area)
         {
-            Console.WriteLine("ПАШЕЛ НАХУЙ!");
+            if (ModelState.IsValid)
+                _resourceService.AddArea(area);
             return Redirect("/");
         }
 
@@ -67,7 +68,8 @@ namespace Monitoring.Controllers
 
         public IActionResult Index()
         {
-            return View(_resourceService.GetAllParameters());
+            ViewData["db"] = _resourceService;
+            return View();
         }
 
         public IActionResult Privacy()
