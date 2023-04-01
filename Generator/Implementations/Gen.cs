@@ -6,13 +6,6 @@ using System.Text;
 
 public class Gen : IDataGenerator
 {
-
-    class Govno
-    {
-        public Area area { get; set; }
-        public List<Parameter> parameters { get; set; }   
-    }
-
     public Task<string> GenerateJson()
     {
         Random random = new Random();

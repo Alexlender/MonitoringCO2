@@ -18,6 +18,16 @@ namespace Monitoring.Controllers
             _resourceService = resourceService;
         }
 
+
+        [HttpPost]
+        [Route("/addDiarea")]
+        public async Task AddDiarea(Diarea diarea)
+        {
+            Console.WriteLine("New Diarea" +
+                $"Area: {diarea.area.Name}" +
+                $"Params Count: {diarea.parameters.Count}");
+        }
+
         [HttpPost]
         [Route("/adddata")]
         public async Task AddData(Parameter param)
