@@ -78,14 +78,15 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <form method="post" asp-controller="Home" asp-action="AddParameterToArea">
+                            <div class="input-param-div">
                             <input asp-for="area" value="@area" hidden readonly>
-                            <input asp-for="name" class="form-control ms-3 mb-3" placeholder="Имя" />
+                            <input asp-for="name" class="input-param" placeholder="Имя" />
                             <span asp-validation-for="name"></span>
-                                    <input asp-for="min" class="form-control ms-3 mb-3" placeholder="Мин" />
+                                    <input asp-for="min" class="input-param" placeholder="Мин" />
                             <span asp-validation-for="min"></span>
-                                    <input asp-for="max" class="form-control ms-3 mb-3" placeholder="Макс" />
+                                    <input asp-for="max" class="input-param" placeholder="Макс" />
                             <span asp-validation-for="max"></span>
-
+                                    </div>
                             <input type="submit" class="mb-3 ms-3 me-3 btn-primary" value="Принять" />
                         </form>
 
