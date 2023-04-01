@@ -27,12 +27,14 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <form method="post" asp-controller="Home" asp-action="AddArea">
-                <input asp-for="name" class="form-control mb-3" placeholder="Имя" />
-                <span asp-validation-for="name"></span>
-                <input asp-for="description" class="form-control mb-3" placeholder="Описание" />
-                <span asp-validation-for="description"></span>
+                <div class="input-param-div">
+                    <input asp-for="name" class="input-param" placeholder="Имя" />
+                    <span asp-validation-for="name"></span>
+                    <input asp-for="description" class="input-param" placeholder="Описание" />
+                    <span asp-validation-for="description"></span>
 
-                <input type="submit" class="mb-3 btn-primary" value="Принять" />
+                    <input type="submit" class="mx-3 my-3 btn-primary" value="Принять" />
+                </div>
             </form>
 
         </div>
@@ -86,8 +88,9 @@
                             <span asp-validation-for="min"></span>
                                     <input asp-for="max" class="input-param" placeholder="Макс" />
                             <span asp-validation-for="max"></span>
-                                    </div>
-                            <input type="submit" class="mb-3 ms-3 me-3 btn-primary" value="Принять" />
+                                    
+                            <input type="submit" class="mx-3 my-3 btn-primary" value="Принять" />
+                        </div>
                         </form>
 
                     </div>
