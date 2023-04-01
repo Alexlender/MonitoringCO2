@@ -1,0 +1,18 @@
+﻿.body {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: 30% auto;
+}
+
+.graph {
+    border: 2px solid black;
+}
+
+
+.file-upload-wrapper {
+    border: 2px solid black;
+    border-radius: 10px;
+}
+
+.gr {
+}
