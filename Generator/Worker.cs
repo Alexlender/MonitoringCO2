@@ -21,7 +21,6 @@ namespace Generator
                 {
                     var gen = new Gen();
                     var json = gen.GenerateJson();
-                    `
                     Console.WriteLine(json);
                     File.WriteAllText(@"C:\Users\Admin\Documents\data.json", json.ReadAsStringAsync().Result);
                 }
