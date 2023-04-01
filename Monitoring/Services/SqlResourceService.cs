@@ -55,6 +55,11 @@ namespace Monitoring.Services
             db.SaveChangesAsync();
         }
 
+        public List<float> GetParamsValueFromArea(Area area, Models.Type type)
+        {
+            return db.Parameters.Where(x => x.area == area && x.type == type).Select(x => x.num).ToList();
+        }
+
         public List<Parameter> GetAllParameters()
         {
             return db.Parameters.ToList();

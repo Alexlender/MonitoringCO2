@@ -9,6 +9,7 @@ namespace Monitoring.Interfaces
 
         void AddParametersFromFile(string str);
 
+        public List<float> GetParamsValueFromArea(Area area, Models.Type type);
         public Area GetArea(string name);
         void AddDiarea(Diarea diarea);
 
