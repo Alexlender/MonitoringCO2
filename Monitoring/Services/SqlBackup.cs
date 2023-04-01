@@ -21,7 +21,7 @@ namespace Monitoring.Services
                 {
                     Directory.CreateDirectory(backupPath);
                     Console.WriteLine("backup");
-                    string query = $"BACKUP DATABASE [{connection.Database}] TO DISK = \'{backupPath}\\{DateTime.Today.Minute}_{DateTime.Today.Second}.bak\'";
+                    string query = $"BACKUP DATABASE [{connection.Database}] TO DISK = \'{backupPath}\\{DateTime.Today.Hour}_{DateTime.Today.Minute}.bak\'";
                     db.Database.ExecuteSqlCommand(TransactionalBehavior.DoNotEnsureTransaction, query);
                 }
                 connection.Close();
