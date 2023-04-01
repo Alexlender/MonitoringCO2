@@ -12,10 +12,16 @@
         </form>
     </div> 
     <div class="areas-list">
-        <p class="text-center">Загрузите файл с данными</p>
-        <div class="file-upload-wrapper center">
-            
-            <input type="file" id="input-file-now" class="file-upload"/>
+        <div class="upload-container">
+
+                      <form id="upload-container" method="POST" action="send.php">
+                      <img id="upload-image" src="upload.svg">
+                      <div>
+                           <input id="file-input" type="file" name="file" multiple>
+                           <label for="file-input">Выберите файл</label>
+                           <span>или перетащите его сюда</span>
+                      </div>
+                     </form>    
 
         </div>
     </div>
