@@ -106,35 +106,95 @@
     </div>
 </div>
 <div>
-    @foreach(var t in db.GetParamsTypesByArea(db.GetAreas().First()))
+    <script>
+        const ctx = document.getElementById('myChart');
+
+        const maxval = Array(6).fill(20);
+        const minval = Array(6).fill(5);
+        new Chart(ctx,
+            {
+                type: 'line',
+
+                data: {
+                    labels: ['01.03.22', '02.03.22', '03.03.22', '04.03.22', '05.03.22', '06.03.22'],
+
+                    datasets: [
+
+        @foreach (var t in db.GetParamsTypesByArea(db.GetAreas().First()))
+        {
+                            <script>
+
+                            label: @t.name,
+                            data: JSON.stringify("@db.GetParamsValueFromArea(db.GetAreas().First(), t)")
+                            borderWidth: 4,
+                            borderColor: 'blue'
+        </script>
+
+        },
     {
-        var chart = new Chart(width: 600, height: 400).AddTitle("График-хуяфик").AddSeries(
-            name: t.name,
-            xValue: db.GetParamsDatesFromArea(db.GetAreas().First(), t),
-            yValues: db.GetParamsValueFromArea(db.GetAreas().First(), t)).Write();
-        }
-</div>
-        <script src="https://snipp.ru/cdn/jquery/2.1.1/jquery.min.js"></script>
-        <script>
-            $('.upload-container input[type=file]').on('change', function(){
-	            let file = this.files[0];
-	            $('.body').find('.upload-text').html(file.name);
+    label: 'Temperature',
+    data: [24, 12, 5, 1, 16, 1],
+    borderWidth: 4,
+    borderColor: 'black'
+
+    },
+    {
+
+    label: 'Max Value',
+    fill: false,
+    data: maxval,
+    borderWidth: 2,
+    borderColor: 'red',
+    borderDash: [10, 5],
+    pointStyle: false
+
+    },
+    {
+
+    label: 'Min Value',
+    fill: false,
+    data: minval,
+    borderWidth: 2,
+    borderColor: 'red',
+    borderDash: [10, 5],
+    pointStyle: false
+
+    }
+    ]
+    },
+    options: {
+    tension: 0.15,
+
+    scales: {
+    y: {
+    beginAtZero: true
+    }
+    }
+    }
+    });
+    </script>
+
+    <script src="https://snipp.ru/cdn/jquery/2.1.1/jquery.min.js"></script>
+    <script>
+        $('.upload-container input[type=file]').on('change', function () {
+                let file = this.files[0];
+                $('.body').find('.upload-text').html(file.name);
             });
-        </script>
-        <script>
-            function fileValidation () {
+    </script>
+    <script>
+                    function fileValidation() {
             var toValidate = document.getElementById('jsonfile');
-                var filePath = toValidate.value;
+            var filePath = toValidate.value;
 
-                // Allowing file type
-                var allowedExtensions =
-                    /(\.json)$/i;
+            // Allowing file type
+            var allowedExtensions =
+                /(\.json)$/i;
 
-                if (!allowedExtensions.exec(filePath)) {
-                    toValidate.value = '';
-                    window.location.replace("https://youtu.be/dQw4w9WgXcQ")
-                    return false;
-                }
-            }
-        </script>
+            if(!allowedExtensions.exec(filePath)) {
+            toValidate.value = '';
+            window.location.replace("https://youtu.be/dQw4w9WgXcQ")
+            return false;
+        }
+                    }
+    </script>
 </div>
