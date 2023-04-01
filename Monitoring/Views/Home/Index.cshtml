@@ -38,14 +38,9 @@
 
         <script>
             const ctx = document.getElementById('myChart');
-            function generateData(value, i1, i2, step = 1) {
-                  for (let x = i1; x <= i2; x += step) {
-                    yValues.push(eval(value));
-                  }
-            }
-            y=20;
-            var yValues = [];
-            generateData(y, 0, 10, 0.5);
+            
+            const filledArray = Array(6).fill({ value: 20 });
+
             new Chart(ctx,
                 {
                     type: 'line',
@@ -68,9 +63,10 @@
                             
                         },
                         {
+                            
                             label: 'Max Value',
                             fill: false,
-                            data: yValues,
+                            data: filledArray,
                             borderWidth: 2,
                             borderColor: 'red',
                             borderDash: [10, 5],
