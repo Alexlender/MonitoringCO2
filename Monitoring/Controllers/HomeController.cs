@@ -44,17 +44,12 @@ namespace Monitoring.Controllers
             return Redirect("/");
         }
 
-        public IActionResult AddFile(IFormFile file)
+        public IActionResult AddFile(IFormFile file) //System.NullReferenceException
         {
-            Console.WriteLine(file.FileName);
-            if (!file.FileName.Contains(".json"))
-            {
-                Console.WriteLine("ERROR: Incorrect file type");
-                return Redirect("/");
-            }
-            MemoryStream stream = new MemoryStream(); //
+
+            MemoryStream stream = new MemoryStream();
             
-            file.CopyTo(stream);
+            Console.WriteLine(file.FileName);
             stream.Seek(0, SeekOrigin.Begin);
             StreamReader reader = new StreamReader(stream);
             string text = reader.ReadToEnd();
