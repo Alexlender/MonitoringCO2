@@ -56,6 +56,7 @@ namespace Monitoring.Controllers
             MemoryStream stream = new MemoryStream();
             
             Console.WriteLine(file.FileName);
+            file.CopyTo(stream);
             stream.Seek(0, SeekOrigin.Begin);
             StreamReader reader = new StreamReader(stream);
             string text = reader.ReadToEnd();
