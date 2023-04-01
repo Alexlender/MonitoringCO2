@@ -7,8 +7,8 @@
 
 <div class="body">
     <div>
-        <form method="post" asp-controller="Home" asp-action="BackupButton" class="align-self-center">
-            <input type="submit" class="mb-3 btn-primary" value="Архивировать" />
+        <form method="get" asp-controller="Home" asp-action="BackupButton" class="align-self-center">
+            <input type="button" class="mb-3 btn-primary" value="Архивировать" />
         </form>
     </div> 
     <div class="areas-list">
@@ -19,14 +19,6 @@
 
         </div>
     </div>
-        <div class="areas-list">
-            <h1 class="display-4">Загрузите файл с данными</h1>
-            <div class="file-upload-wrapper center">
-
-                <input type="file" id="input-file-now" class="file-upload" />
-
-            </div>
-        </div>
 
         <div class="graph">
             <canvas id="myChart"></canvas>

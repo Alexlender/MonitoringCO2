@@ -21,6 +21,7 @@ namespace Monitoring.Controllers
 
         public IActionResult BackupButton()
         {
+            Console.WriteLine("Button test");
             SqlBackup.backup_db();
             return View();
         }

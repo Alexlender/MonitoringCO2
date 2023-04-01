@@ -18,6 +18,7 @@ namespace Monitoring.Services
                 string backupPath = create_backupPath();
                 if (connection != null && connection.State == System.Data.ConnectionState.Open)
                 {
+                    Console.WriteLine("Button test");
                     string query = $"BACKUP DATABASE [{connection.Database}] TO DISK = \'{backupPath}\'";
                     db.Database.ExecuteSqlCommand(TransactionalBehavior.DoNotEnsureTransaction, query);
                 }
