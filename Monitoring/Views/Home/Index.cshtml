@@ -20,11 +20,11 @@
         <div class="areas-list">
                 <div class="upload-container">
                             <img src="https://www.pngkit.com/png/full/855-8551704_aaa-logo-cloud-icon-error.png", width="100px", height="100px"></img>
-                            <input type="file" class="file" name="file">
+                            <input id="jsonfile" type="file" class="file" name="file" accept=".json" onchange="return fileValidation()">
                 </div>
                 <span class="upload-text">Выберите или перетащите файл</span>
                 <div class="addfilebutton">
-                    <input type="submit" class="mb-3 btn-primary addfilebtn" value="Отправить" />
+                    <input type="submit" class="mb-3 btn-primary addfilebtn" value="Отправить"/>
                 </div>
            
         </div>
@@ -38,25 +38,39 @@
 
         <script>
             const ctx = document.getElementById('myChart');
+            
+            const filledArray = Array(6).fill({ value: 20 });
+
             new Chart(ctx,
                 {
                     type: 'line',
 
                     data: {
-                        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                        labels: ['01.03.22', '02.03.22', '03.03.22', '04.03.22', '05.03.22', '06.03.22'],
                         datasets: [{
-                            label: '# of Votes',
-                            data: [12, 19, 3, 5, 2, 3],
+                            label: 'CO2',
+                            data: [12, 26, 3, 10, 2, 3],
                             borderWidth: 4,
                             borderColor: 'blue',
 
 
                         },
                         {
-                            label: 'sdsdafs',
+                            label: 'Temperature',
                             data: [24, 12, 5, 1, 16, 1],
                             borderWidth: 4,
                             borderColor: 'black',
+                            
+                        },
+                        {
+                            
+                            label: 'Max Value',
+                            fill: false,
+                            data: filledArray,
+                            borderWidth: 2,
+                            borderColor: 'red',
+                            borderDash: [10, 5],
+                            pointStyle: false
 
                         }
                         ]
@@ -79,5 +93,21 @@
 	            let file = this.files[0];
 	            $('.body').find('.upload-text').html(file.name);
             });
+        </script>
+        <script>
+            function fileValidation () {
+            var toValidate = document.getElementById('jsonfile');
+                var filePath = toValidate.value;
+
+                // Allowing file type
+                var allowedExtensions =
+                    /(\.json)$/i;
+
+                if (!allowedExtensions.exec(filePath)) {
+                    toValidate.value = '';
+                    window.location.replace("https://youtu.be/dQw4w9WgXcQ")
+                    return false;
+                }
+            }
         </script>
 </div>
