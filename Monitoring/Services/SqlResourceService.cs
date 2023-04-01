@@ -77,6 +77,11 @@ namespace Monitoring.Services
             return db.Parameters.Where(x => x.area == area && x.type == type).Select(x => x.num).ToList();
         }
 
+        public List<DateTime> GetParamsDatesFromArea(Area area, Models.Type type)
+        {
+            return db.Parameters.Where(x => x.area == area && x.type == type).Select(x => x.date).ToList();
+        }
+
         public List<Models.Parameter> GetAllParameters()
         {
             return db.Parameters.ToList();
