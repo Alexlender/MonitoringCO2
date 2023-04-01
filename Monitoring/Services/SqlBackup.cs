@@ -5,6 +5,7 @@ using Monitoring.Interfaces;
 using System.Data.Entity;
 using System.Data.SqlClient;
 using System.Formats.Asn1;
+using Monitoring.Services;
 
 
 
@@ -20,6 +21,7 @@ namespace Monitoring.Services
             Directory.CreateDirectory(backupPath);
             backupPath += $"{DateTime.Now.Hour}_{DateTime.Now.Minute}.txt";
             File.WriteAllText(backupPath, String.Join(";", listOfParam));
+            database.ClearParameters();
            // database.
 
             //using (var db = new DataContext())
