@@ -7,31 +7,29 @@
 
 
 
-<div>
-    <form method="get" asp-controller="Home" asp-action="BackupButton" class="align-self-center">
-        <input type="submit" class="mb-3 btn-primary" value="Архивировать" />
-    </form>
-</div>
-<div class="body">
 
+<div class="body">
+    <div>
+        <form method="get" asp-controller="Home" asp-action="BackupButton" class="align-self-center">
+            <input type="submit" class="mb-3 btn-primary" value="Архивировать" />
+        </form>
+    </div>
     <div class="areas-list">
         <div class="upload-container">
-
             <div class="file-area">
                 <label>
                     <span class="input-file-text" type="text"></span>
                     <input type="file" name="file">
                     <span class="input-file-btn">Выберите или перетащите файл</span>
                 </label>
-            </div>   
-            <div class='confirm-area'>
-                <form method="get" asp-controller="Home" asp-action="AddFile" class="align-self-center">
-                    <input type="submit" class="mb-3 btn-primary" value="Отправить" />
-                </form>
             </div>
         </div>
+        <div class="addfilebutton">
+            <form method="get" asp-controller="Home" asp-action="AddFile" class="align-self-center">
+                <input type="submit" class="mb-3 btn-primary" value="Отправить" />
+            </form>
+        </div>
     </div>
-
         <div class="graph">
             <canvas id="myChart"></canvas>
             <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
