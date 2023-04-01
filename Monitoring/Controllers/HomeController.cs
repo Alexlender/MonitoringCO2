@@ -30,8 +30,9 @@ namespace Monitoring.Controllers
         public IActionResult AddFile(IFormFile file)
         {
             Console.WriteLine(file.FileName);
-            Stream stream = null;
+            MemoryStream stream = new MemoryStream();
             file.CopyTo(stream);
+
             StreamReader reader = new StreamReader(stream);
             string text = reader.ReadToEnd();
             _resourceService.AddParametersFromFile(text);
