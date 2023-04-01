@@ -39,7 +39,8 @@ namespace Monitoring.Controllers
 
         public IActionResult AddArea(Area area)
         {
-            Console.WriteLine("ПАШЕЛ НАХУЙ!");
+            if (ModelState.IsValid)
+                _resourceService.AddArea(area);
             return Redirect("/");
         }
 
@@ -56,6 +57,7 @@ namespace Monitoring.Controllers
             MemoryStream stream = new MemoryStream();
             
             Console.WriteLine(file.FileName);
+            file.CopyTo(stream);
             stream.Seek(0, SeekOrigin.Begin);
             StreamReader reader = new StreamReader(stream);
             string text = reader.ReadToEnd();
@@ -66,7 +68,7 @@ namespace Monitoring.Controllers
 
         public IActionResult Index()
         {
-            return View(_resourceService.GetAllParameters());
+            return View();
         }
 
         public IActionResult Privacy()
