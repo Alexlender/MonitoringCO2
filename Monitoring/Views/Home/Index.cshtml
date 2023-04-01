@@ -1,4 +1,5 @@
 ﻿@using Monitoring.Interfaces;
+@using System.Web.Helpers;
 @model GigaModel
 @{
     
@@ -100,53 +101,17 @@
             </ul>
         </div>
     </div>
-        <div class="graph">
-            <canvas id="myChart"></canvas>
-            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-        </div>
 </div>
-
-
-        <script>
-            const ctx = document.getElementById('myChart');
-
-            const maxval = Array(6).fill(20);
-            const minval = Array(6).fill(5);
-            new Chart(ctx,
-                {
-                    type: 'line',
-
-                    data: {
-                        labels: ['01.03.22', '02.03.22', '03.03.22', '04.03.22', '05.03.22', '06.03.22'],
-                     
-                        datasets: [
-
-                        @foreach(var t in db.GetParamsTypesByArea(db.GetAreas().First()))
-                        {
-                            <script>
-
-                                                label: @t.name,
-                                                data: Json.Parse('@Html.Raw(@db.GetParamsValueFromArea(db.GetAreas().First(), t))')
-                                                borderWidth: 4,
-                                                borderColor: 'blue'
-                            </script>
-
-                        }
-                        
-                        ]
-                    },
-                    options: {
-                        tension: 0.15,
-
-                        scales: {
-                            y: {
-                                beginAtZero: true
-                            }
-                        }
-                    }
-                });
-        </script>
-
+<div>
+    @foreach(var t in db.GetParamsTypesByArea(db.GetAreas().First()))
+    {
+        var chart = new Chart(width: 600, height: 400).AddTitle("График-хуяфик").AddSeries(
+            name: t.name,
+            yValue: db.GetParamsValueFromArea(db.GetAreas().First(), t),
+            xValue: db.GetParamsDates(db.GetAreas().First(), t)).Write();
+    )
+        }
+</div>
         <script src="https://snipp.ru/cdn/jquery/2.1.1/jquery.min.js"></script>
         <script>
             $('.upload-container input[type=file]').on('change', function(){
