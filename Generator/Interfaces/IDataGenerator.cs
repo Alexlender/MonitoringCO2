@@ -2,6 +2,6 @@
 {
     public interface IDataGenerator
     {
-        Task<string> GenerateJson();
+        JsonContent GenerateJson();
     }
 }
