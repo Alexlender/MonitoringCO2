@@ -50,15 +50,14 @@ namespace Monitoring.Controllers
         {
             Area area = new Area() { description = gm.description, name = gm.name };
 
-            if (ModelState.IsValid)
-                _resourceService.AddArea(area);
+            _resourceService.AddArea(area);
             return Redirect("/");
         }
 
         public IActionResult BackupButton()
         {
             Console.WriteLine("Button test");
-            SqlBackup.backup_db( _resourceService);
+            SqlBackup.backup_db(_resourceService);
             return Redirect("/");
         }
 
