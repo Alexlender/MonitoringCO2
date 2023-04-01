@@ -1,9 +1,15 @@
-﻿
+﻿.areas {
+    display: grid;
+    grid-template-areas:
+        "A A A A   A A A A   C C C C"
+        "B B B B   B B B B   C C C C"
+        "B B B B   B B B B   C C C C";
+}
 
 .body {
     display: grid;
     gap: 20px;
-    grid-template-columns: 30% auto;
+    grid-template-columns: 40% auto;
 }
 
 .graph {
@@ -14,9 +20,7 @@
 img {
     width: 100px;
     height: 100px;
-    display: block;
-    margin-top: 40%;
-    margin-left: 38%;
+    margin-top: 60%;
 }
 .upload-form {
     padding:0;

@@ -38,64 +38,71 @@
         </div>
     </div>
 </div>
+
 <div class="body">
+    <div class="areas">
     
-    <form enctype="multipart/form-data" method="post" asp-controller="Home" asp-action="AddFile" class="upload-form">
+        <form enctype="multipart/form-data" method="post" asp-controller="Home" asp-action="AddFile" class="upload-form">
         
-        <div class="areas-list">
-                <div class="upload-container">
-                            <img src="https://www.pngkit.com/png/full/855-8551704_aaa-logo-cloud-icon-error.png", width="100px", height="100px"></img>
-                            <input id="jsonfile" type="file" class="file" name="file" accept=".json" onchange="return fileValidation()">
-                </div>
-                <span class="upload-text">Выберите или перетащите файл</span>
-                <div class="addfilebutton">
-                    <input type="submit" class="mb-3 btn-primary addfilebtn" value="Отправить"/>
-                </div>
-           
-        </div>
-    </form>
-      <ul>
-        @foreach(var area in db.GetAreas())
-        {
-                <li>
-                    @area.name - @area.description
-                    
-                    <ul class="params list-group">
-                        <li class="list-group-item">фыв 1</li>
-                        <li class="list-group-item">фыв 2</li>
-                        <li class="list-group-item">фыв 3</li>
-                        <li><button type="button" class="mb-3 btn-primary" data-bs-toggle="modal" data-bs-target="#@area.id">Добавить параметр</button></li>
-                    </ul>
-                </li>
-            <div class="modal fade mb-3" id="@area.id" tabindex="-1" aria-hidden="true" aria-labeledby="AddParam">
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                        <div class="modal-header mb-3">
-                            <h1 class="modal-title fs-5" id="AreaAddLabel">Добавить арею</h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <form method="post" asp-controller="Home" asp-action="AddParameterToArea">
-                            <input asp-for="area" value="@area" hidden readonly>
-                            <input asp-for="name" class="form-control mb-3" placeholder="Имя" />
-                            <span asp-validation-for="name"></span>
-                            <input asp-for="min" class="form-control mb-3" placeholder="Описание" />
-                            <span asp-validation-for="min"></span>
-                            <input asp-for="max" class="form-control mb-3" placeholder="Описание" />
-                            <span asp-validation-for="max"></span>
-
-                            <input type="submit" class="mb-3 btn-primary" value="Принять" />
-                        </form>
-
+            <div class="areas-list">
+                    <div class="upload-container">
+                                <img src="https://www.pngkit.com/png/full/855-8551704_aaa-logo-cloud-icon-error.png", width="100px", height="100px"></img>
+                                <input id="jsonfile" type="file" class="file" name="file" accept=".json" onchange="return fileValidation()">
                     </div>
-                </div>
+                    <span class="upload-text">Выберите или перетащите файл</span>
+                    <div class="addfilebutton">
+                        <input type="submit" class="mb-3 btn-primary addfilebtn" value="Отправить"/>
+                    </div>
+           
             </div>
-        }
-        </ul>
-    
+        </form>
+            <div>
+                  <ul>
+                    @foreach(var area in db.GetAreas())
+                    {
+                            <li>
+                                @area.name - @area.description
+                    
+                                <ul class="params list-group">
+                                    <li class="list-group-item">фыв 1</li>
+                                    <li class="list-group-item">фыв 2</li>
+                                    <li class="list-group-item">фыв 3</li>
+                                    <li><button type="button" class="mb-3 btn-primary" data-bs-toggle="modal" data-bs-target="#@area.id">Добавить параметр</button></li>
+                                </ul>
+                            </li>
+                        <div class="modal fade mb-3" id="@area.id" tabindex="-1" aria-hidden="true" aria-labeledby="AddParam">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header mb-3">
+                                        <h1 class="modal-title fs-5" id="AreaAddLabel">Добавить арею</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <form method="post" asp-controller="Home" asp-action="AddParameterToArea">
+                                        <input asp-for="area" value="@area" hidden readonly>
+                                        <input asp-for="name" class="form-control mb-3" placeholder="Имя" />
+                                        <span asp-validation-for="name"></span>
+                                        <input asp-for="min" class="form-control mb-3" placeholder="Описание" />
+                                        <span asp-validation-for="min"></span>
+                                        <input asp-for="max" class="form-control mb-3" placeholder="Описание" />
+                                        <span asp-validation-for="max"></span>
+
+                                        <input type="submit" class="mb-3 btn-primary" value="Принять" />
+                                    </form>
+
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    </ul>
+            </div>
+
+    </div>    
         <div class="graph">
             <canvas id="myChart"></canvas>
             <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
         </div>
+</div>
+
 
         <script>
             const ctx = document.getElementById('myChart');
