@@ -15,9 +15,9 @@
 }
 
 .upload-container {
-    border: 2px solid red;
     display: grid;
     grid-template-rows: auto;
+    justify-content: center;
 }
 .file-area {
     width: 100%;
