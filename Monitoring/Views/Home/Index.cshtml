@@ -38,25 +38,43 @@
 
         <script>
             const ctx = document.getElementById('myChart');
+            function generateData(value, i1, i2, step = 1) {
+                  for (let x = i1; x <= i2; x += step) {
+                    yValues.push(eval(value));
+                  }
+            }
+            y=20;
+            var yValues = [];
+            generateData(y, 0, 10, 0.5);
             new Chart(ctx,
                 {
                     type: 'line',
 
                     data: {
-                        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                        labels: ['01.03.22', '02.03.22', '03.03.22', '04.03.22', '05.03.22', '06.03.22'],
                         datasets: [{
-                            label: '# of Votes',
-                            data: [12, 19, 3, 5, 2, 3],
+                            label: 'CO2',
+                            data: [12, 26, 3, 10, 2, 3],
                             borderWidth: 4,
                             borderColor: 'blue',
 
 
                         },
                         {
-                            label: 'sdsdafs',
+                            label: 'Temperature',
                             data: [24, 12, 5, 1, 16, 1],
                             borderWidth: 4,
                             borderColor: 'black',
+                            
+                        },
+                        {
+                            label: 'Max Value',
+                            fill: false,
+                            data: yValues,
+                            borderWidth: 2,
+                            borderColor: 'red',
+                            borderDash: [10, 5],
+                            pointStyle: false
 
                         }
                         ]
