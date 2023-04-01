@@ -59,7 +59,17 @@ img {
     background-color: rgb(83, 136, 107);
 }
 
-
+.upload-container:hover > img{
+    animation: anim linear 1s;
+}
+@keyframes anim{
+    from {
+        transform: translateY(0em);
+    }
+    to {
+        transform: translateY(-0.5em);
+    }
+}
 .upload-container input[type=file] {
     position: absolute;
     width: 100%;
@@ -85,7 +95,14 @@ li:hover > .params {
     transition: 0.5s ease-in;
 }
 li {
+    
     cursor: default;
     margin-top: 5px;
     list-style-type: none;
+
+}
+.areas-li {
+    text-align: center;
+    border: 2px solid black;
+    border-radius: 10px;
 }
