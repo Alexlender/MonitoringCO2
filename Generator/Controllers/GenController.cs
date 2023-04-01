@@ -23,6 +23,12 @@ namespace Generator.Controllers
             area = areaStr;
             return Redirect("/");
         }
+        
+        public IActionResult Download()
+        {
+            DownloadFile.Download(@"data.json");
+            return Redirect("/");
+        }
         public IActionResult SourceButton()
         {
             AreaSource.AddSource("adadaad");

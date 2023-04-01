@@ -15,6 +15,7 @@ namespace Generator
             _httpClient = new HttpClient();
             Area = area;
         }
+
         public async Task Run()
         {
             while (true)
@@ -27,9 +28,9 @@ namespace Generator
                     var json = gen.GenerateJson(Area);
                     using (var httpClient = new HttpClient())
                     {
-                        var resp = httpClient.PostAsync(@"https://localhost:7050/adddiarea", json);
+                        //var resp = httpClient.PostAsync(@"https://localhost:7050/adddiarea", json);
                         //Console.WriteLine(resp.Result);
-                        File.AppendAllText(@"C:\Users\Admin\Documents\data.json", json.ReadAsStringAsync().Result);
+                        File.AppendAllText(@"data.json", json.ReadAsStringAsync().Result);
                     }
                 }
                 await Task.Delay(TimeSpan.FromSeconds(1));
