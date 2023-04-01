@@ -7,13 +7,8 @@ using System.Text;
 public class Gen : IDataGenerator
 {
 
-    class Buff
-    {
-        public Area area { get; set; }
-        public List<Parameter> parameters { get; set; }   
-    }
 
-    public JsonContent GenerateJson()
+    public JsonContent GenerateJson(string areaStr)
     {
         Random random = new Random();
 
@@ -43,7 +38,7 @@ public class Gen : IDataGenerator
         using (var httpClient = new HttpClient())
         {
 
-            var resp = httpClient.PostAsync(@"https://localhost:7050/adddiarea/", json);
+            var resp = httpClient.PostAsync(@"https://localhost:7050/adddiarea", json);
             Console.WriteLine(resp.Result);
         }
 

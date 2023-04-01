@@ -2,10 +2,11 @@
 using Microsoft.AspNetCore.Mvc;
 using Monitoring.Interfaces;
 using Monitoring.Models;
+using System.Net;
 
 namespace Monitoring.Controllers
 {
-    [ApiController]
+    //[ApiController]
     public class ParameterController : ControllerBase
     {
 
@@ -17,31 +18,16 @@ namespace Monitoring.Controllers
             _resourceService = resourceService;
         }
 
-
         [HttpPost]
         [Route("/adddiarea")]
-        public async Task AddDiarea(Diarea diarea)
+        public async Task AddDiarea([FromBody] Diarea diarea)
         {
             Console.WriteLine("New Diarea" +
                 $"Area: {diarea.area.Name}" +
                 $"Params Count: {diarea.parameters.Count}");
+            _resourceService.AddDiarea(diarea);
         }
 
-        [HttpPost]
-        [Route("/adddata")]
-        public async Task AddData(Parameter param)
-        {
 
-            Console.WriteLine("New param" +
-                $"type: {param.type.name}" +
-                $"num: {param.num}" +
-                $"date: {param.date}");
-
-            if (ModelState.IsValid)
-            {
-                _resourceService.AddParameter(param);
-            }
-
-        }
     }
 }
