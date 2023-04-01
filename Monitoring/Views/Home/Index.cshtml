@@ -66,10 +66,11 @@
                     @area.name - @area.description
                     
                     <ul class="params list-group">
-                        <li class="list-group-item">фыв 1</li>
-                        <li class="list-group-item">фыв 2</li>
-                        <li class="list-group-item">фыв 3</li>
-                    <li><button type="button" class="mb-3 btn-primary" data-bs-toggle="modal" data-bs-target="#area_@area.id">Добавить параметр</button></li>
+                            @foreach (var t in db.GetParamsTypesByArea(area))
+                            {
+                                <li class="list-group-item">@t.name</li>
+                            }
+					li<li> < button type = "button" class="mb-3 btn-primary" data-bs-toggle="modal" data-bs-target="#area_@area.id">Добавить параметр</button></li>
                     </ul>
                 </li>
             <div class="modal fade mb-3" id="area_@area.id" tabindex="-1" aria-hidden="true" aria-labeledby="AddParam">
