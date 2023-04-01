@@ -70,11 +70,12 @@ img {
     transition: 0.5s ease-out;
 }
 li:hover > .params {
-    cursor: pointer;
+    
     max-height: 100vh;
     transition: 0.5s ease-in;
 }
 li {
+    cursor: default;
     margin-top: 5px;
     list-style-type: none;
 }
