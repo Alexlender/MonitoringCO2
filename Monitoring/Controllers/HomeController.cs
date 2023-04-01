@@ -20,6 +20,23 @@ namespace Monitoring.Controllers
             _resourceService = resourceService;
         }
 
+        [HttpPost]
+        [Route("/adddata")]
+        public async Task AddData([FromBody] Models.Parameter param)
+        {
+
+            Console.WriteLine("New param\n" +
+                $"type: \n" +
+                $"num: {param.num}\n" +
+                $"date: \n");
+
+            if (ModelState.IsValid)
+            {
+                _resourceService.AddParameter(param);
+            }
+
+        }
+
         public IActionResult BackupButton()
         {
             Console.WriteLine("Button test");

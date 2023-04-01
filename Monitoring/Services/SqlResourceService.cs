@@ -7,6 +7,21 @@ namespace Monitoring.Services
     public class SqlResourceService : IResourceService
     {
         private DataContext db = new DataContext();
+
+        public void AddDiarea(Diarea diarea)
+        {
+            if (db.Areas.AsEnumerable().Where(a => a.Name == diarea.area.Name).ToList().Count == 1)
+                foreach (var p in diarea.parameters)
+                {
+                    p.area = diarea.area;
+                    db.Parameters.Add(p);
+                }
+            else
+            {
+                db.Areas.Add(new Area() { Name = "StrongMachine", Description = "Какое-то описание" });
+            }
+        }
+
         public void AddParameter(Parameter parameter)
         {
             db.Parameters.Add(parameter);

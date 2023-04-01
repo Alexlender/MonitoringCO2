@@ -10,5 +10,6 @@
 
         public DateTime date { get; set; }//getdate
 
+        public Area area { get; set; } // 
     }
 }

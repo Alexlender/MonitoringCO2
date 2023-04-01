@@ -8,6 +8,8 @@ namespace Monitoring.Interfaces
         void AddParameter(Parameter Parameter);
 
         void AddParametersFromFile(string str);
+
+        void AddDiarea(Diarea diarea);
         List<Parameter> GetAllParameters();
 
     }
