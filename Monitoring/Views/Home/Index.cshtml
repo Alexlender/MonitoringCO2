@@ -6,7 +6,11 @@
 <script>$(('.file-upload').file_upload();)</script>
 
 <div class="body">
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#BackupButton">Архивировать</button>
+    <div>
+        <form method="post" asp-controller="Home" asp-action="BackupButton" class="align-self-center">
+            <input type="submit" class="mb-3 btn-primary" value="Архивировать" />
+        </form>
+    </div> 
     <div class="areas-list">
         <p class="text-center">Загрузите файл с данными</p>
         <div class="file-upload-wrapper center">
