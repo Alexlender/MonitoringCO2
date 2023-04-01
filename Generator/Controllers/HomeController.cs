@@ -2,11 +2,11 @@
 using Generator.Interfaces;
 using Generator.Models;
 using Microsoft.AspNetCore.Mvc;
-using Monitoring.Services;
 using System.Diagnostics;
 
 namespace Generator.Controllers
 {
+    [Route("Generator")]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
@@ -21,13 +21,13 @@ namespace Generator.Controllers
             return Redirect("/");
         }
         //filePath();
-
+        [Route("IndexGenerator")]
         public IActionResult Index()
         {
             return View();
         }
-
-        public IActionResult Privacy()
+        [Route("HelpGenerator")]
+        public IActionResult Help()
         {
             return View();
         }
