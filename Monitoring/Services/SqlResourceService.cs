@@ -43,9 +43,19 @@ namespace Monitoring.Services
         }
         public void AddParameterToArea(AreaParam ap)
         {
+            Models.Type type;
             if (!db.Types.AsEnumerable().Select(x => x.name).Contains(ap.type.name))
-                db.Types.Add(new Models.Type() { name = ap.type.name });
-
+            {
+                type = new Models.Type() { name = ap.type.name };
+                db.Types.Add(type);
+            }
+            else
+            {
+                type = db.Types.AsEnumerable().Where(x => x.name == ap.type.name).FirstOrDefault();
+            }
+            Area area = db.Areas.FirstOrDefault(a => a.name == ap.area.name);
+            ap.area = area;
+            ap.type = type;
             db.AreaParams.Add(ap); 
             db.SaveChangesAsync();
         }
@@ -62,7 +72,8 @@ namespace Monitoring.Services
 
         public List<Models.Type> GetParamsTypesByArea(Area area)
         {
-            return db.AreaParams.AsEnumerable().Where(x => x.area == area).Select(x => x.type).Distinct().ToList();
+            
+            return db.Types.AsEnumerable().Where(x => db.AreaParams.AsEnumerable().Where(t => t.area == area).Select(r => r.type).ToList().Contains(x)).ToList();
         }
         
     }
