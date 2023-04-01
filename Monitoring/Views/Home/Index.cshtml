@@ -7,8 +7,13 @@
 
 
     
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#BackupButton">Архивировать</button>
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#BackupButton">Архивировать</button>
 <div class="body">
+    <div>
+        <form method="get" asp-controller="Home" asp-action="BackupButton" class="align-self-center">
+            <input type="button" class="mb-3 btn-primary" value="Архивировать" />
+        </form>
+    </div> 
     <div class="areas-list">
         <div class="upload-container">
 
@@ -24,49 +29,44 @@
         </div>
     </div>
 
-    <div class="graph">
-        <canvas id="myChart"></canvas>
-        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    </div>
+        <div class="graph">
+            <canvas id="myChart"></canvas>
+            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        </div>
 
-    <script>
-        const ctx = document.getElementById('myChart');
+        <script>
+            const ctx = document.getElementById('myChart');
+            new Chart(ctx,
+                {
+                    type: 'line',
 
-
-        new Chart(ctx,
-            {
-                type: 'line',
-
-                data: {
-                    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-                    datasets: [{
-                        label: '# of Votes',
-                        data: [12, 19, 3, 5, 2, 3],
-                        borderWidth: 4,
-                        borderColor: 'blue',
+                    data: {
+                        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                        datasets: [{
+                            label: '# of Votes',
+                            data: [12, 19, 3, 5, 2, 3],
+                            borderWidth: 4,
+                            borderColor: 'blue',
 
 
+                        },
+                        {
+                            label: 'sdsdafs',
+                            data: [24, 12, 5, 1, 16, 1],
+                            borderWidth: 4,
+                            borderColor: 'black',
+
+                        }
+                        ]
                     },
-                    {
-                        label: 'sdsdafs',
-                        data: [24, 12, 5, 1, 16, 1],
-                        borderWidth: 4,
-                        borderColor: 'black',
-
-                    }
-                    ]
-                },
-                options: {
-                    tension: 0.15,
-                    scales: {
-                        y: {
-                            beginAtZero: true
+                    options: {
+                        tension: 0.15,
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
                         }
                     }
-                }
-            });
-
-
-    </script>
-</div>
+                });
+        </script>
 </div>
