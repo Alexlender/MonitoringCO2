@@ -19,25 +19,10 @@ namespace Monitoring.Services
             List<Monitoring.Models.Parameter> listOfParam = database.GetAllParameters();
             string backupPath = create_backupPath();
             Directory.CreateDirectory(backupPath);
-            backupPath += $"{DateTime.Now.Hour}_{DateTime.Now.Minute}.txt";
+            backupPath += $"{DateTime.Now.Hour}_{DateTime.Now.Minute}.csv";
             File.WriteAllText(backupPath, String.Join(";", listOfParam));
-            database.ClearParameters();
-           // database.
-
-            //using (var db = new DataContext())
-            //{
-            //    string backupPath = create_backupPath();
-            //    var connection = db.Database.Connection as SqlConnection;
-            //    connection.Open();
-            //    if (connection != null && connection.State == System.Data.ConnectionState.Open)
-            //    {
-            //        Directory.CreateDirectory(backupPath);
-            //        Console.WriteLine("backup");
-            //        string query = $"BACKUP DATABASE [{connection.Database}] TO DISK = \'{backupPath}\\{DateTime.Today.Hour}_{DateTime.Today.Minute}.bak\'";
-            //        db.Database.ExecuteSqlCommand(TransactionalBehavior.DoNotEnsureTransaction, query);
-            //    }
-            //    connection.Close();
-            //}
+            //database.ClearParameters();
+           
         }
         static string create_backupPath()
         {
