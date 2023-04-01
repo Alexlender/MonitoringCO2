@@ -5,7 +5,6 @@ using Monitoring.Models;
 
 namespace Monitoring.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
     public class ParameterController : ControllerBase
     {

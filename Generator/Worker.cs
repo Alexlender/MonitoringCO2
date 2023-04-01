@@ -21,8 +21,12 @@ namespace Generator
                 {
                     var gen = new Gen();
                     var json = gen.GenerateJson();
-                    Console.WriteLine(json);
-                    File.WriteAllText(@"C:\Users\Admin\Documents\data.json", json.ReadAsStringAsync().Result);
+                    using (var httpClient = new HttpClient())
+                    {
+                        //var resp = httpClient.PostAsync(@"https://localhost:7050/adddiarea", json);
+                        //Console.WriteLine(resp.Result);
+                        File.WriteAllText(@"C:\Users\Admin\Documents\data.json", json.ReadAsStringAsync().Result);
+                    }
                 }
                 await Task.Delay(TimeSpan.FromSeconds(1));
             }

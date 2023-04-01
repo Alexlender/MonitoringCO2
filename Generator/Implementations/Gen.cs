@@ -36,8 +36,18 @@ public class Gen : IDataGenerator
         };
         data.Add(area1, parameters);
 
-        JsonContent json = JsonContent.Create(new List<Buff>() { new Buff() { area = area1, parameters = parameters }, 
-            new Buff() { area = area1, parameters = parameters } });
+        Diarea d = new Diarea() { area = area1, parameters = parameters };
+
+        JsonContent json = JsonContent.Create(d);
+
+        using (var httpClient = new HttpClient())
+        {
+
+            var resp = httpClient.PostAsync(@"https://localhost:7050/adddiarea/", json);
+            Console.WriteLine(resp.Result);
+        }
+
+
         return json;
     }
 }
