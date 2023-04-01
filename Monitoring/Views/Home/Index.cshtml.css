@@ -20,6 +20,7 @@
     border: 2px dashed green;
     display: grid;
     grid-template-rows: auto;
+    justify-content: center;
 }
 .file-area {
     width: 100%;
