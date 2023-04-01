@@ -1,19 +1,26 @@
 ﻿using System;
-using System.Security.Cryptography.X509Certificates;
 using Newtonsoft.Json;
 using Monitoring.Models;
 using Generator.Interfaces;
-using System.Xml.Linq;
+using System.Text;
 
 public class Gen : IDataGenerator
 {
-    public string GenerateJson()
+
+    class Buff
+    {
+        public Area area { get; set; }
+        public List<Parameter> parameters { get; set; }   
+    }
+
+    public JsonContent GenerateJson()
     {
         Random random = new Random();
 
         var data = new Dictionary<Area, List<Parameter>>();
         float pressure, wet, temperatureArea, temperatureEquip, cO2Level;
-        Area area = new Area() { Name = "StrongMachine" };
+        Area area1 = new Area() { Name = "StrongMachine" };
+        Area area2 = new Area() { Name = "RegularMachine" };
         pressure = (float)random.NextDouble() * 100;
         wet = (float)random.NextDouble() * 100;
         temperatureArea = (float)random.NextDouble() * 100;
@@ -23,12 +30,14 @@ public class Gen : IDataGenerator
         {
                 new Parameter { type = new Monitoring.Models.Type(){name = "Pressure" }, num = pressure, date =  DateTime.UtcNow},
                 new Parameter { type = new Monitoring.Models.Type(){name = "Wet" }, num = wet, date =  DateTime.UtcNow },
-                new Parameter { type = new Monitoring.Models.Type(){name = "Pressure" }, num = temperatureArea, date =  DateTime.UtcNow },
-                new Parameter { type = new Monitoring.Models.Type(){name = "Pressure" }, num = temperatureEquip, date =  DateTime.UtcNow },
-                new Parameter { type = new Monitoring.Models.Type(){name = "Pressure" }, num = cO2Level, date =  DateTime.UtcNow },
+                new Parameter { type = new Monitoring.Models.Type(){name = "TemperatureArea" }, num = temperatureArea, date =  DateTime.UtcNow },
+                new Parameter { type = new Monitoring.Models.Type(){name = "TemperatureEquip" }, num = temperatureEquip, date =  DateTime.UtcNow },
+                new Parameter { type = new Monitoring.Models.Type(){name = "CO2Level" }, num = cO2Level, date =  DateTime.UtcNow },
         };
-        data.Add(area, parameters);
-        var json = JsonConvert.SerializeObject(data);
-        return (json);
+        data.Add(area1, parameters);
+
+        JsonContent json = JsonContent.Create(new List<Buff>() { new Buff() { area = area1, parameters = parameters }, 
+            new Buff() { area = area1, parameters = parameters } });
+        return json;
     }
 }
