@@ -37,6 +37,12 @@ namespace Monitoring.Controllers
 
         }
 
+        public IActionResult AddArea(Area area)
+        {
+            Console.WriteLine("ПАШЕЛ НАХУЙ!");
+            return Redirect("/");
+        }
+
         public IActionResult BackupButton()
         {
             Console.WriteLine("Button test");

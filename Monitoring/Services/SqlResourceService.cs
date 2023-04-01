@@ -15,11 +15,9 @@ namespace Monitoring.Services
                 {
                     p.area = diarea.area;
                     db.Parameters.Add(p);
+                    db.SaveChangesAsync();
                 }
-            else
-            {
-                db.Areas.Add(new Area() { Name = "StrongMachine", Description = "Какое-то описание" });
-            }
+
         }
 
         public void AddParameter(Parameter parameter)
