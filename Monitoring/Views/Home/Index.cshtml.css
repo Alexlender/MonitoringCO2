@@ -5,11 +5,11 @@
 }
 
 .graph {
-    border: 2px solid black;
+    border: 2px solid gray;
 }
 
 .areas-list {
-    border: 2px solid black;
+    border: 2px dashed green;
     display: grid;
     grid-template-rows: auto;
 }
@@ -23,25 +23,21 @@
     width: 100%;
     position: relative;
     font-size: 18px;
+    display:flex;
+    justify-content: center;
+    margin: auto;
 }
 
-    .file-area input[type=file] {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        top: auto;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        opacity: 0;
-        cursor: pointer;
-    }
+.file-area input[type=file] {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0;
+    cursor: pointer;
+}
 
-    .file-area .file-dummy {
-        width: 100%;
-        padding: 50px 30px;
-        background-color: #fff;
-        text-align: center;
-        transition: background 0.3s ease-in-out;
-    }
 
