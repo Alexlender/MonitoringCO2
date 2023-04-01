@@ -2,31 +2,31 @@
 using Generator.Interfaces;
 using Generator.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using System.Diagnostics;
 
 namespace Generator.Controllers
 {
-    [Route("Generator")]
-    public class HomeController : Controller
+    public class GenController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly ILogger<GenController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        public GenController(ILogger<GenController> logger)
         {
             _logger = logger;
         }
+
         public IActionResult SourceButton()
         {
             AreaSource.AddSource("adadadddada");
-            return Redirect("/");
+            return RedirectToAction("Index");
         }
-        //filePath();
-        [Route("IndexGenerator")]
+
         public IActionResult Index()
         {
             return View();
         }
-        [Route("HelpGenerator")]
+
         public IActionResult Help()
         {
             return View();
