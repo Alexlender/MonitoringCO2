@@ -6,7 +6,14 @@ using System.Text;
 
 public class Gen : IDataGenerator
 {
-    public Task<string> GenerateJson()
+
+    class Buff
+    {
+        public Area area { get; set; }
+        public List<Parameter> parameters { get; set; }   
+    }
+
+    public JsonContent GenerateJson()
     {
         Random random = new Random();
 
@@ -29,8 +36,8 @@ public class Gen : IDataGenerator
         };
         data.Add(area1, parameters);
 
-        JsonContent json = JsonContent.Create(new List<Govno>() { new Govno() { area = area1, parameters = parameters }, 
-            new Govno() { area = area1, parameters = parameters } });
-        return json.ReadAsStringAsync();
+        JsonContent json = JsonContent.Create(new List<Buff>() { new Buff() { area = area1, parameters = parameters }, 
+            new Buff() { area = area1, parameters = parameters } });
+        return json;
     }
 }
