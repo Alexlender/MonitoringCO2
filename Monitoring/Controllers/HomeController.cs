@@ -6,6 +6,7 @@ using System.Reflection.Metadata;
 using System;
 using System.Threading.Tasks;
 using Monitoring.Services;
+using System.IO;
 
 namespace Monitoring.Controllers
 {
@@ -29,8 +30,11 @@ namespace Monitoring.Controllers
         public IActionResult AddFile(IFormFile file)
         {
             Console.WriteLine(file.FileName);
-
-           // _resourceService.AddParametersFromFile(file.OpenReadStream);
+            Stream stream = null;
+            file.CopyTo(stream);
+            StreamReader reader = new StreamReader(stream);
+            string text = reader.ReadToEnd();
+            _resourceService.AddParametersFromFile(text);
             return Redirect("/");
         }
 
