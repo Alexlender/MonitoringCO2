@@ -47,9 +47,9 @@ namespace Monitoring.Services
             return db.Areas.ToList();
         }
 
-        public List<Area> GetParamsTypesByArea(Area area)
+        public List<Models.Type> GetParamsTypesByArea(Area area)
         {
-            return new List<Area>();
+            return db.AreaParams.AsEnumerable().Where(x => x.area == area).Select(x => x.type).Distinct().ToList();
         }
         
     }
