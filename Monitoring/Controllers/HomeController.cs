@@ -47,10 +47,18 @@ namespace Monitoring.Controllers
         public IActionResult AddFile(IFormFile file)
         {
             Console.WriteLine(file.FileName);
-            Stream stream = null;
+            if (!file.FileName.Contains(".json"))
+            {
+                Console.WriteLine("ERROR: Incorrect file type");
+                return Redirect("/");
+            }
+            MemoryStream stream = new MemoryStream(); //
+            
             file.CopyTo(stream);
+            stream.Seek(0, SeekOrigin.Begin);
             StreamReader reader = new StreamReader(stream);
             string text = reader.ReadToEnd();
+            Console.WriteLine(text);
             _resourceService.AddParametersFromFile(text);
             return Redirect("/");
         }
