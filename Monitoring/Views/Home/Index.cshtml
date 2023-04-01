@@ -64,9 +64,10 @@
                         @area.name - @area.description
 
                         <ul class="params list-group">
-                            <li class="list-group-item">фыв 1</li>
-                            <li class="list-group-item">фыв 2</li>
-                            <li class="list-group-item">фыв 3</li>
+                            @foreach( var t in db.GetParamsTypesByArea(area)){
+                            <li class="list-group-item">@t.name</li>
+                            }
+                            
                             <li><button type="button" class="mb-3 btn-primary" data-bs-toggle="modal" data-bs-target="#area_@area.id">Добавить параметр</button></li>
                         </ul>
                     </li>
@@ -78,7 +79,7 @@
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <form method="post" asp-controller="Home" asp-action="AddParameterToArea">
-                                    <input asp-for="area" value="@area" hidden readonly>
+                                    <input asp-for="areaName" value="@area.name" hidden readonly>
                                     <input asp-for="name" class="form-control mb-3" placeholder="Имя" />
                                     <span asp-validation-for="name"></span>
                                     <input asp-for="min" class="form-control mb-3" placeholder="Мин" />
