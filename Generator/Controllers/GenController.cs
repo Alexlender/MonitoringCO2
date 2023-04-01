@@ -18,15 +18,15 @@ namespace Generator.Controllers
         }
         public string area;
         [HttpPost]
-        public IActionResult AreaAdd(string areaStr)
+        public IActionResult DiAreaAdd(string areaStr)
         {
             area = areaStr;
-            return RedirectToAction("Index");
+            return Redirect("/");
         }
         public IActionResult SourceButton()
         {
-            AreaSource.AddSource(area);
-            return RedirectToAction("Index");
+            AreaSource.AddSource("adadaad");
+            return Redirect("/");
         }
 
         public IActionResult Index()
