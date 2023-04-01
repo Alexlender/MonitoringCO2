@@ -7,13 +7,8 @@ using System.Text;
 public class Gen : IDataGenerator
 {
 
-    class Buff
-    {
-        public Area area { get; set; }
-        public List<Parameter> parameters { get; set; }   
-    }
 
-    public JsonContent GenerateJson()
+    public JsonContent GenerateJson(string areaStr)
     {
         Random random = new Random();
 

@@ -1,18 +1,26 @@
-﻿using Generator.Models;
+﻿using Generator.Implementations;
+using Generator.Interfaces;
+using Generator.Models;
 using Microsoft.AspNetCore.Mvc;
 using Monitoring.Services;
 using System.Diagnostics;
 
 namespace Generator.Controllers
 {
-    public class HomeControllerGenerator : Controller
+    public class HomeController : Controller
     {
-        private readonly ILogger<HomeControllerGenerator> _logger;
+        private readonly ILogger<HomeController> _logger;
 
-        public HomeControllerGenerator(ILogger<HomeControllerGenerator> logger)
+        public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
         }
+        public IActionResult SourceButton()
+        {
+            AreaSource.AddSource("adadadddada");
+            return Redirect("/");
+        }
+        //filePath();
 
         public IActionResult Index()
         {

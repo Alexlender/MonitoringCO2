@@ -7,6 +7,7 @@ namespace Generator
     public class Worker
     {
         private readonly HttpClient _httpClient;
+        public string Area = "StrongMachine";
 
         public Worker()
         {
@@ -19,8 +20,9 @@ namespace Generator
             {
                 for (int i = 0; i < 100; i++)
                 {
+                    
                     var gen = new Gen();
-                    var json = gen.GenerateJson();
+                    var json = gen.GenerateJson(Area);
                     using (var httpClient = new HttpClient())
                     {
                         //var resp = httpClient.PostAsync(@"https://localhost:7050/adddiarea", json);

@@ -15,8 +15,6 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
-var dataGenerator = new Worker();
-await dataGenerator.Run();
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
@@ -30,3 +28,5 @@ app.MapControllerRoute(
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.Run();
+var dataGenerator = new Worker();
+await dataGenerator.Run();
