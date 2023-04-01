@@ -1,6 +1,15 @@
 ﻿using Monitoring.Interfaces;
 using Monitoring.Models;
+using Monitoring.Interfaces;
 using Monitoring.DataAccessLayer;
+using Telegram.Bot;
+using Telegram.Bot.Exceptions;
+using Telegram.Bot.Polling;
+using Telegram.Bot.Types;
+using Telegram.Bot.Types.Enums;
+using Newtonsoft.Json.Linq;
+using System;
+using System.Reflection.Metadata;
 
 namespace Monitoring.Services
 {
@@ -26,9 +35,17 @@ namespace Monitoring.Services
 
         }
 
-        public void AddParameter(Parameter parameter)
-        {
+        public void AddParameter(Models.Parameter parameter)
+        {   string token = "6166785103:AAENUDBKarPw8YQGo55M3B1cSYUdWtHOOOE";
+            long chatId = -1001900397982;
+            TelegramBotClient botClient = new TelegramBotClient(token);
             db.Parameters.Add(parameter);
+            AreaParam ap = db.AreaParams.Where(x => x.area.name == parameter.area.name).Where(x => x.type.name == parameter.type.name).First();
+            if (parameter.num > ap.max || parameter.num < ap.min)
+            {
+                var message = $"ALARM!!!!\n{parameter.type.name} = {parameter.num}";
+                botClient.SendTextMessageAsync(chatId, message);
+            }
             db.SaveChanges();
         }
 
@@ -60,12 +77,17 @@ namespace Monitoring.Services
             return db.Parameters.Where(x => x.area == area && x.type == type).Select(x => x.num).ToList();
         }
 
-        public List<Parameter> GetAllParameters()
+        public List<DateTime> GetParamsDatesFromArea(Area area, Models.Type type)
+        {
+            return db.Parameters.Where(x => x.area == area && x.type == type).Select(x => x.date).ToList();
+        }
+
+        public List<Models.Parameter> GetAllParameters()
         {
             return db.Parameters.ToList();
         }
 
-        public Area GetArea(string name)
+        public Area GetArea(string name)    
         {
             return db.Areas.Where(x => x.name == name).FirstOrDefault();
         }
@@ -82,6 +104,11 @@ namespace Monitoring.Services
         }
 
         public void AddParametersFromFile(string str)
+        {
+            throw new NotImplementedException();
+        }
+
+        List<Models.Parameter> IResourceService.GetAllParameters()
         {
             throw new NotImplementedException();
         }

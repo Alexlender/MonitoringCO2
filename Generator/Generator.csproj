@@ -15,4 +15,8 @@
     <ProjectReference Include="..\Monitoring\Monitoring.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="data\" />
+  </ItemGroup>
+
 </Project>
