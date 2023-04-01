@@ -1,5 +1,6 @@
 ﻿using Generator.Models;
 using Microsoft.AspNetCore.Mvc;
+using Monitoring.Services;
 using System.Diagnostics;
 
 namespace Generator.Controllers
