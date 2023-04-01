@@ -66,7 +66,7 @@ namespace Monitoring.Controllers
 
         public IActionResult Index()
         {
-            return View(_resourceService.GetAllParameters());
+            return View();
         }
 
         public IActionResult Privacy()
