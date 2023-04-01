@@ -26,6 +26,14 @@ namespace Monitoring.Controllers
             return Redirect("/");
         }
 
+        public IActionResult AddFile(IFormFile file)
+        {
+            Console.WriteLine(file.FileName);
+
+           // _resourceService.AddParametersFromFile(file.OpenReadStream);
+            return Redirect("/");
+        }
+
         public IActionResult Index()
         {
             return View(_resourceService.GetAllParameters());

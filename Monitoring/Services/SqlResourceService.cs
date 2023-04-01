@@ -13,6 +13,11 @@ namespace Monitoring.Services
             db.SaveChangesAsync();
         }
 
+        public void AddParametersFromFile(string str)
+        {
+
+            Console.WriteLine(str);
+        }
         public List<Parameter> GetAllParameters()
         {
             return db.Parameters.ToList();
