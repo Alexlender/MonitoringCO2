@@ -16,18 +16,17 @@
 <div class="body">
     <div class="areas-list">
         <div class="upload-container">
-            <div class="file-area">
-                <label>
-                    <span class="input-file-text" type="text"></span>
-                    <input type="file" name="file">
-                    <span class="input-file-btn">Выберите или перетащите файл</span>
-                </label>
-            </div>
+
+
+                    <div class="upload-text"> <span>Выберите или перетащите файл</span></div>
+                    <input type="file" class="file">
+                    
+
         </div>
 
         <div class="addfilebutton">
             <form method="get" asp-controller="Home" asp-action="AddFile" class="align-self-center">
-                <input type="submit" class="mb-3 btn-primary" value="Отправить" />
+                <input type="submit" class="mb-3 btn-primary addfilebtn" value="Отправить" />
             </form>
         </div>
     </div>
