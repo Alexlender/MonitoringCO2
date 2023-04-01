@@ -32,7 +32,7 @@ namespace Monitoring.Controllers
             Console.WriteLine(file.FileName);
             if (!file.FileName.Contains(".json"))
             {
-                Console.WriteLine("ERROR: Incorrect file type";
+                Console.WriteLine("ERROR: Incorrect file type");
                 return Redirect("/");
             }
             MemoryStream stream = new MemoryStream(); //
