@@ -15,16 +15,13 @@
 
 <div class="body">
     <div class="areas-list">
-        <form method="post" asp-controller="Home" asp-action="AddFile" class="align-self-center">
+        <form enctype="multipart/form-data" method="post" asp-controller="Home" asp-action="AddFile" class="align-self-center">
             <div class="upload-container">
                         <div class="upload-text"> <span>Выберите или перетащите файл</span></div>
-                        <input type="file" class="file">
+                        <input type="file" class="file" name="file">
             </div>
-
             <div class="addfilebutton">
-            
-                    <input type="submit" class="mb-3 btn-primary addfilebtn" value="Отправить" />
-            
+                <input type="submit" class="mb-3 btn-primary addfilebtn" value="Отправить" />
             </div>
         </form>
     </div>
