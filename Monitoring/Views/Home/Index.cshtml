@@ -14,17 +14,23 @@
 </div>
 
 <div class="body">
-    <div class="areas-list">
-        <form enctype="multipart/form-data" method="post" asp-controller="Home" asp-action="AddFile" class="align-self-center">
-            <div class="upload-container">
-                        <div class="upload-text"> <span>Выберите или перетащите файл</span></div>
-                        <input type="file" class="file" name="file">
-            </div>
-            <div class="addfilebutton">
-                <input type="submit" class="mb-3 btn-primary addfilebtn" value="Отправить" />
-            </div>
-        </form>
-    </div>
+    
+    <form enctype="multipart/form-data" method="post" asp-controller="Home" asp-action="AddFile" class="upload-form">
+        
+        <div class="areas-list">
+                <div class="upload-container">
+                            <img src="https://www.pngkit.com/png/full/855-8551704_aaa-logo-cloud-icon-error.png", width="100px", height="100px"></img>
+                            <input type="file" class="file" name="file">
+                </div>
+                <span class="upload-text">Выберите или перетащите файл</span>
+                <div class="addfilebutton">
+                    <input type="submit" class="mb-3 btn-primary addfilebtn" value="Отправить" />
+                </div>
+           
+        </div>
+      
+    </form>
+    
         <div class="graph">
             <canvas id="myChart"></canvas>
             <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -65,5 +71,13 @@
                         }
                     }
                 });
+        </script>
+
+        <script src="https://snipp.ru/cdn/jquery/2.1.1/jquery.min.js"></script>
+        <script>
+            $('.upload-container input[type=file]').on('change', function(){
+	            let file = this.files[0];
+	            $('.body').find('.upload-text').html(file.name);
+            });
         </script>
 </div>
