@@ -110,9 +110,8 @@
     {
         var chart = new Chart(width: 600, height: 400).AddTitle("График-хуяфик").AddSeries(
             name: t.name,
-            yValue: db.GetParamsValueFromArea(db.GetAreas().First(), t),
-            xValue: db.GetParamsDates(db.GetAreas().First(), t)).Write();
-    )
+            xValue: db.GetParamsDatesFromArea(db.GetAreas().First(), t),
+            yValues: db.GetParamsValueFromArea(db.GetAreas().First(), t)).Write();
         }
 </div>
         <script src="https://snipp.ru/cdn/jquery/2.1.1/jquery.min.js"></script>
