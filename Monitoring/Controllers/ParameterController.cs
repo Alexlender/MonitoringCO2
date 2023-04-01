@@ -5,7 +5,6 @@ using Monitoring.Models;
 
 namespace Monitoring.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
     public class ParameterController : ControllerBase
     {
@@ -16,6 +15,16 @@ namespace Monitoring.Controllers
         {
             _logger = logger;
             _resourceService = resourceService;
+        }
+
+
+        [HttpPost]
+        [Route("/adddiarea")]
+        public async Task AddDiarea(Diarea diarea)
+        {
+            Console.WriteLine("New Diarea" +
+                $"Area: {diarea.area.Name}" +
+                $"Params Count: {diarea.parameters.Count}");
         }
 
         [HttpPost]
