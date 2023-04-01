@@ -5,12 +5,15 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>$(('.file-upload').file_upload();)</script>
 
+
+
+<div>
+    <form method="get" asp-controller="Home" asp-action="BackupButton" class="align-self-center">
+        <input type="button" class="mb-3 btn-primary" value="Архивировать" />
+    </form>
+</div>
 <div class="body">
-    <div>
-        <form method="get" asp-controller="Home" asp-action="BackupButton" class="align-self-center">
-            <input type="button" class="mb-3 btn-primary" value="Архивировать" />
-        </form>
-    </div> 
+
     <div class="areas-list">
         <div class="upload-container">
 
