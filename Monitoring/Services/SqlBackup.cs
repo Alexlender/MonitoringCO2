@@ -16,8 +16,8 @@ namespace Monitoring.Services
         public static void backup_db(IResourceService database)
         {
             List<Monitoring.Models.Parameter> listOfParam = database.GetAllParameters();
-            string backupPath1 = @"12332r";//create_backupPath();
-            File.WriteAllText(backupPath1, String.Join(";", listOfParam));
+            string backupPath = create_backupPath();
+            File.WriteAllText(backupPath, String.Join(";", listOfParam));
             
 
             //using (var db = new DataContext())
