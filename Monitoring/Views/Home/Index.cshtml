@@ -75,6 +75,7 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <form method="post" asp-controller="Home" asp-action="AddParameterToArea">
+                            <input asp-for="area" value="@area" hidden readonly>
                             <input asp-for="name" class="form-control mb-3" placeholder="Имя" />
                             <span asp-validation-for="name"></span>
                             <input asp-for="min" class="form-control mb-3" placeholder="Описание" />
