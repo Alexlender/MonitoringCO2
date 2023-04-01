@@ -3,6 +3,7 @@
     using Generator.Implementations;
     using System;
     using System.Net.Http;
+    using System.Text;
     using System.Threading.Tasks;
 
     public class Worker
@@ -22,11 +23,10 @@
             {
                 var gen = new Gen();
                 string json = gen.GenerateJson();
-                var uri = new Uri(@"http://localhost/adddata");
-                var response = await _httpClient.PostAsync(uri, json);
+                var content = new StringContent(json, Encoding.UTF8, "text/plain"); //форматирование текста
+                var response = await _httpClient.PostAsync("http://localhost/adddata", content);
                 var write = new WriteToFile();
                 write.WriteTextToFile(@"C:\Users\Admin\Documents\data.txt", json);
-
                 await Task.Delay(TimeSpan.FromSeconds(1));
             }
         }
