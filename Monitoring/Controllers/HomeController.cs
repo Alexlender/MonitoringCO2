@@ -7,6 +7,7 @@ using System;
 using System.Threading.Tasks;
 using Monitoring.Services;
 using System.IO;
+using System.Text.Json;
 
 namespace Monitoring.Controllers
 {
@@ -69,8 +70,24 @@ namespace Monitoring.Controllers
             stream.Seek(0, SeekOrigin.Begin);
             StreamReader reader = new StreamReader(stream);
             string text = reader.ReadToEnd();
-            Console.WriteLine(text);
-            _resourceService.AddParametersFromFile(text);
+            List<Diarea> diareaInfo = JsonSerializer.Deserialize<List<Diarea>>(text);
+            foreach (Diarea diarea in diareaInfo)
+            {
+                Console.WriteLine(diarea.area.id);
+                Console.WriteLine(diarea.area.name);
+                Console.WriteLine(diarea.area.description);
+                foreach (var param in diarea.parameters)
+                {
+                    Console.WriteLine("{");
+                    Console.WriteLine(param.id);
+                    Console.WriteLine(param.type.id);
+                    Console.WriteLine(param.type.name);
+                    Console.WriteLine(param.num);
+                    Console.WriteLine(param.date);
+                    Console.WriteLine("}");
+                }
+            }
+            //_resourceService.AddParametersFromFile(text);
             return Redirect("/");
         }
 
