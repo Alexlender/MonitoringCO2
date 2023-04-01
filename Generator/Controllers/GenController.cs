@@ -3,6 +3,7 @@ using Generator.Interfaces;
 using Generator.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Monitoring.Models;
 using System.Diagnostics;
 
 namespace Generator.Controllers
@@ -10,15 +11,21 @@ namespace Generator.Controllers
     public class GenController : Controller
     {
         private readonly ILogger<GenController> _logger;
-
+        
         public GenController(ILogger<GenController> logger)
         {
             _logger = logger;
         }
-
+        public string area;
+        [HttpPost]
+        public IActionResult AreaAdd(string areaStr)
+        {
+            area = areaStr;
+            return RedirectToAction("Index");
+        }
         public IActionResult SourceButton()
         {
-            AreaSource.AddSource("adadadddada");
+            AreaSource.AddSource(area);
             return RedirectToAction("Index");
         }
 
@@ -35,7 +42,7 @@ namespace Generator.Controllers
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            return View(new Monitoring.Models.ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }
 }

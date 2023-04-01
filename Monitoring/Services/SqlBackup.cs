@@ -18,7 +18,7 @@ namespace Monitoring.Services
             List<Monitoring.Models.Parameter> listOfParam = database.GetAllParameters();
             string backupPath = create_backupPath();
             File.WriteAllText(backupPath, String.Join(";", listOfParam));
-            
+           // database.
 
             //using (var db = new DataContext())
             //{
