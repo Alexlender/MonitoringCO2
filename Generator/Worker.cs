@@ -19,16 +19,17 @@ namespace Generator
         {
             while (true)
             {
-                for (int i = 0; i < 100; i++)
+                int i = 0;
+                for (; i < 100; i++)
                 {
                     
                     var gen = new Gen();
                     var json = gen.GenerateJson(Area);
                     using (var httpClient = new HttpClient())
                     {
-                        //var resp = httpClient.PostAsync(@"https://localhost:7050/adddiarea", json);
+                        var resp = httpClient.PostAsync(@"https://localhost:7050/adddiarea", json);
                         //Console.WriteLine(resp.Result);
-                        File.WriteAllText(@"C:\Users\Admin\Documents\data.json", json.ReadAsStringAsync().Result);
+                        File.AppendAllText(@"C:\Users\Admin\Documents\data.json", json.ReadAsStringAsync().Result);
                     }
                 }
                 await Task.Delay(TimeSpan.FromSeconds(1));

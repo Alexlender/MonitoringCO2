@@ -25,7 +25,7 @@ namespace Generator.Controllers
         }
         public IActionResult SourceButton()
         {
-            AreaSource.AddSource(area);
+            AreaSource.AddSource("adadaad");
             return Redirect("/");
         }
 
