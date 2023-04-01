@@ -119,19 +119,17 @@
                     data: {
                         labels: ['01.03.22', '02.03.22', '03.03.22', '04.03.22', '05.03.22', '06.03.22'],
                      
-                        datasets: [{
+                        datasets: [
 
                         @foreach(var t in db.GetParamsTypesByArea(db.GetAreas().First()))
                         {
+                            <script>
 
-                                                label: t.name,
-                                                data: [12, 26, 3, 10, 2, 3],
+                                                label: @t.name,
+                                                data: @foreach(var d in t.na) {  }
                                                 borderWidth: 4,
                                                 borderColor: 'blue'
-
-                        }
-    
-
+                            </script>
 
                         },
                         {
