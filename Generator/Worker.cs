@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using Monitoring.Models;
+using System.IO;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
@@ -7,13 +8,13 @@ namespace Generator
     public class Worker
     {
         private readonly HttpClient _httpClient;
-        public string Area = "StrongMachine";
+        public string Area { get; private set; }
 
-        public Worker()
+        public Worker(string area)
         {
             _httpClient = new HttpClient();
+            Area = area;
         }
-
         public async Task Run()
         {
             while (true)
