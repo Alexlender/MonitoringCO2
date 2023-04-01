@@ -11,7 +11,13 @@
     gap: 20px;
     grid-template-columns: 40% auto;
 }
-
+.input-param-div{
+    display: grid;
+    grid-template-rows: auto auto auto;
+    gap: 10px;
+    max-width: 90%;
+    margin: auto;
+}
 .graph {
     border: 2px solid gray;
 }
