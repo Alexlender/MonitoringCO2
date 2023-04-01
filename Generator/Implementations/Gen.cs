@@ -6,6 +6,13 @@ using System.Text;
 
 public class Gen : IDataGenerator
 {
+
+    class Govno
+    {
+        public Area area { get; set; }
+        public List<Parameter> parameters { get; set; }   
+    }
+
     public Task<string> GenerateJson()
     {
         Random random = new Random();
@@ -13,7 +20,7 @@ public class Gen : IDataGenerator
         var data = new Dictionary<Area, List<Parameter>>();
         float pressure, wet, temperatureArea, temperatureEquip, cO2Level;
         Area area1 = new Area() { Name = "StrongMachine" };
-        Area area2 = new Area() { Name = "StrongMachine" };
+        Area area2 = new Area() { Name = "RegularMachine" };
         pressure = (float)random.NextDouble() * 100;
         wet = (float)random.NextDouble() * 100;
         temperatureArea = (float)random.NextDouble() * 100;
@@ -29,7 +36,8 @@ public class Gen : IDataGenerator
         };
         data.Add(area1, parameters);
 
-        JsonContent json = JsonContent.Create(data);
+        JsonContent json = JsonContent.Create(new List<Govno>() { new Govno() { area = area1, parameters = parameters }, 
+            new Govno() { area = area1, parameters = parameters } });
         return json.ReadAsStringAsync();
     }
 }

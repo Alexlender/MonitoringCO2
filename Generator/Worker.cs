@@ -20,7 +20,7 @@ namespace Generator
             {
                 var gen = new Gen();
                 string json = gen.GenerateJson().Result;
-                //var response = await _httpClient.PostAsync("http://localhost/adddata", content);
+                var response = await _httpClient.PostAsync("http://localhost/adddata", content);
                 var write = new WriteToFile();
                 Console.WriteLine(json);
                 File.WriteAllText(@"C:\Users\Admin\Documents\data.json", json);
