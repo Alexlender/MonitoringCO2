@@ -1,19 +1,16 @@
-﻿namespace Generator
+﻿using Generator.Implementations;
+using System.IO;
+using System.Net.Http;
+using System.Text;
+using System.Threading.Tasks;
+namespace Generator
 {
-    using Generator.Implementations;
-    using System;
-    using System.Net.Http;
-    using System.Text;
-    using System.Threading.Tasks;
-
     public class Worker
     {
         private readonly HttpClient _httpClient;
-        private readonly Uri _uri;
 
-        public Worker(Uri uri)
+        public Worker()
         {
-            _uri = uri;
             _httpClient = new HttpClient();
         }
 
@@ -22,11 +19,13 @@
             while (true)
             {
                 var gen = new Gen();
-                string json = gen.GenerateJson();
-                var content = new StringContent(json, Encoding.UTF8, "text/plain"); //форматирование текста
+                string json = gen.GenerateJson().Result;
                 var response = await _httpClient.PostAsync("http://localhost/adddata", content);
                 var write = new WriteToFile();
-                write.WriteTextToFile(@"C:\Users\Admin\Documents\data.txt", json);
+                Console.WriteLine(json);
+                File.WriteAllText(@"C:\Users\Admin\Documents\data.json", json);
+
+                //write.WriteTextToFile(@"C:\Users\Admin\Documents\data.json", json);
                 await Task.Delay(TimeSpan.FromSeconds(1));
             }
         }

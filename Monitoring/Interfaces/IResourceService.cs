@@ -7,6 +7,7 @@ namespace Monitoring.Interfaces
     {
         void AddParameter(Parameter Parameter);
 
+        void AddParametersFromFile(string str);
         List<Parameter> GetAllParameters();
 
     }

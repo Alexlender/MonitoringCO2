@@ -4,11 +4,11 @@ using System.Diagnostics;
 
 namespace Generator.Controllers
 {
-    public class HomeController : Controller
+    public class HomeControllerGenerator : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly ILogger<HomeControllerGenerator> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeControllerGenerator(ILogger<HomeControllerGenerator> logger)
         {
             _logger = logger;
         }
