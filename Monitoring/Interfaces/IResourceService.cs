@@ -12,6 +12,8 @@ namespace Monitoring.Interfaces
         void AddDiarea(Diarea diarea);
 
         void AddArea(Area Area);
+
+        public List<Area> GetAreas();
         List<Parameter> GetAllParameters();
 
     }

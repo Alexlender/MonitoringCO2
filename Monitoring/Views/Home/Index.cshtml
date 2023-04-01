@@ -1,5 +1,9 @@
-﻿@{
+﻿@using Monitoring.Interfaces;
+@{
+    
     ViewData["Title"] = "CO2 Monitor";
+    var db = (IResourceService)(ViewData["db"] as IResourceService);
+
 }
 <script src="~/wwwroot/lib/jquery/dist/jquery.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -50,6 +54,17 @@
            
         </div>
       
+        @foreach(var area in db.GetAreas())
+        {
+             <tr>
+                    <td><input type="submit" class="btn btn-primary" value="Trigger"></td>
+
+                    <td>@area.Name</td>
+                    <td>@area.Description</td>
+  
+                </tr>
+        }
+
     </form>
     
         <div class="graph">
