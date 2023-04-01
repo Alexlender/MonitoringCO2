@@ -47,10 +47,10 @@ namespace Monitoring.Services
             return db.Areas.ToList();
         }
 
-        /*public List<Area> GetParamsByArea(Area area)
+        public List<Area> GetParamsTypesByArea(Area area)
         {
-            //return db.AreaParams.AsEnumerable<AreaParam>().Select().ToList<Area>();
+            return new List<Area>();
         }
-        */
+        
     }
 }

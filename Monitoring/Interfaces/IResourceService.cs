@@ -16,5 +16,7 @@ namespace Monitoring.Interfaces
         public List<Area> GetAreas();
         List<Parameter> GetAllParameters();
 
+        public List<Area> GetParamsTypesByArea(Area area);
+
     }
 }
