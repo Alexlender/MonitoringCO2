@@ -19,10 +19,53 @@
 
         </div>
     </div>
+        <div class="areas-list">
+            <h1 class="display-4">Загрузите файл с данными</h1>
+            <div class="file-upload-wrapper center">
 
-    <div class="graph">
+                <input type="file" id="input-file-now" class="file-upload" />
 
-        жопа
-        
-    </div>
+            </div>
+        </div>
+
+        <div class="graph">
+            <canvas id="myChart"></canvas>
+            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        </div>
+
+        <script>
+            const ctx = document.getElementById('myChart');
+            new Chart(ctx,
+                {
+                    type: 'line',
+
+                    data: {
+                        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                        datasets: [{
+                            label: '# of Votes',
+                            data: [12, 19, 3, 5, 2, 3],
+                            borderWidth: 4,
+                            borderColor: 'blue',
+
+
+                        },
+                        {
+                            label: 'sdsdafs',
+                            data: [24, 12, 5, 1, 16, 1],
+                            borderWidth: 4,
+                            borderColor: 'black',
+
+                        }
+                        ]
+                    },
+                    options: {
+                        tension: 0.15,
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+        </script>
 </div>
