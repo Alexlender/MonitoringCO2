@@ -107,7 +107,7 @@
 </div>
 
 
-        <script>
+       <script>
             const ctx = document.getElementById('myChart');
 
             const maxval = Array(6).fill(20);
@@ -118,21 +118,43 @@
 
                     data: {
                         labels: ['01.03.22', '02.03.22', '03.03.22', '04.03.22', '05.03.22', '06.03.22'],
-                     
-                        datasets: [
+                        datasets: [{
+                            label: @("аа"),
+                            data: [12, 26, 3, 10, 2, 3],
+                            borderWidth: 4,
+                            borderColor: 'blue'
 
-                        @foreach(var t in db.GetParamsTypesByArea(db.GetAreas().First()))
+
+                        },
                         {
-                            <script>
+                            label: 'Temperature',
+                            data: [24, 12, 5, 1, 16, 1],
+                            borderWidth: 4,
+                            borderColor: 'black'
+                            
+                        },
+                        {
+                            
+                            label: 'Max Value',
+                            fill: false,
+                            data: maxval,
+                            borderWidth: 2,
+                            borderColor: 'red',
+                            borderDash: [10, 5],
+                            pointStyle: false
 
-                                                label: @t.name,
-                                                data: Json.Parse('@Html.Raw(@db.GetParamsValueFromArea(db.GetAreas().First(), t))')
-                                                borderWidth: 4,
-                                                borderColor: 'blue'
-                            </script>
+                        },
+                        {
+
+                            label: 'Min Value',
+                            fill: false,
+                            data: minval,
+                            borderWidth: 2,
+                            borderColor: 'red',
+                            borderDash: [10, 5],
+                            pointStyle: false
 
                         }
-                        
                         ]
                     },
                     options: {
