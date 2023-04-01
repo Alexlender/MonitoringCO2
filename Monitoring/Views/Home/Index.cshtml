@@ -56,9 +56,9 @@
 
         <script>
             const ctx = document.getElementById('myChart');
-            
-            const filledArray = Array(6).fill({ value: 20 });
 
+            const maxval = Array(6).fill(20);
+            const minval = Array(6).fill(5);
             new Chart(ctx,
                 {
                     type: 'line',
@@ -69,7 +69,7 @@
                             label: 'CO2',
                             data: [12, 26, 3, 10, 2, 3],
                             borderWidth: 4,
-                            borderColor: 'blue',
+                            borderColor: 'blue'
 
 
                         },
@@ -77,14 +77,25 @@
                             label: 'Temperature',
                             data: [24, 12, 5, 1, 16, 1],
                             borderWidth: 4,
-                            borderColor: 'black',
+                            borderColor: 'black'
                             
                         },
                         {
                             
                             label: 'Max Value',
                             fill: false,
-                            data: filledArray,
+                            data: maxval,
+                            borderWidth: 2,
+                            borderColor: 'red',
+                            borderDash: [10, 5],
+                            pointStyle: false
+
+                        },
+                        {
+
+                            label: 'Min Value',
+                            fill: false,
+                            data: minval,
                             borderWidth: 2,
                             borderColor: 'red',
                             borderDash: [10, 5],
