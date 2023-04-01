@@ -68,6 +68,7 @@ namespace Monitoring.Controllers
 
         public IActionResult Index()
         {
+            ViewData["db"] = _resourceService;
             return View();
         }
 
