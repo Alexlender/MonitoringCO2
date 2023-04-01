@@ -14,17 +14,20 @@
         <input type="submit" class="mb-3 btn-primary" value="Архивировать" />
     </form>
 </div>
+<div class="align-self-end" role="group" aria-label="task-actions">
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#AreaAdd">Добавить диарею</button>
+</div>
 <div class="modal fade mb-3" id="AreaAdd" tabindex="-1" aria-hidden="true" aria-labeledby="AreaAddLabel">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header mb-3">
-                <h1 class="modal-title fs-5" id="TaskAddLabel">Добавить арею</h1>
+                <h1 class="modal-title fs-5" id="AreaAddLabel">Добавить арею</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <form method="post" asp-controller="Home" asp-action="AddArea">
-                <input asp-for="Name" class="form-control mb-3" placeholder="ID диареи" />
+                <input asp-for="Name" class="form-control mb-3" placeholder="Имя" />
                 <span asp-validation-for="Name"></span>
-                <input asp-for="Description" class="form-control mb-3" placeholder="ID диареи" />
+                <input asp-for="Description" class="form-control mb-3" placeholder="Описание" />
                 <span asp-validation-for="Description"></span>
 
                 <input type="submit" class="mb-3 btn-primary" value="Принять" />
