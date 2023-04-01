@@ -20,7 +20,7 @@ namespace Monitoring.Controllers
 
 
         [HttpPost]
-        [Route("/addDiarea")]
+        [Route("/adddiarea")]
         public async Task AddDiarea(Diarea diarea)
         {
             Console.WriteLine("New Diarea" +
