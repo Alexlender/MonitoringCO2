@@ -29,14 +29,9 @@ namespace Monitoring.Services
         public void AddParameter(Parameter parameter)
         {
             db.Parameters.Add(parameter);
-            db.SaveChangesAsync();
+            db.SaveChanges();
         }
 
-        public void AddParametersFromFile(string str)
-        {
-
-            Console.WriteLine(str);
-        }
         public void ClearParameters()
         {
             db.Parameters.RemoveRange(db.Parameters.AsEnumerable());
@@ -65,6 +60,11 @@ namespace Monitoring.Services
             return db.Parameters.ToList();
         }
 
+        public Area GetArea(string name)
+        {
+            return db.Areas.Where(x => x.name == name).FirstOrDefault();
+        }
+
         public List<Area> GetAreas()
         {
             return db.Areas.ToList();
@@ -75,6 +75,10 @@ namespace Monitoring.Services
             
             return db.Types.AsEnumerable().Where(x => db.AreaParams.AsEnumerable().Where(t => t.area == area).Select(r => r.type).ToList().Contains(x)).ToList();
         }
-        
+
+        public void AddParametersFromFile(string str)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
