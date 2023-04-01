@@ -15,18 +15,16 @@
 
 <div class="body">
     
-    <form method="post" asp-controller="Home" asp-action="AddFile" class="upload-form">
+    <form enctype="multipart/form-data" method="post" asp-controller="Home" asp-action="AddFile" class="upload-form">
         
         <div class="areas-list">
                 <div class="upload-container">
                             <img src="https://www.pngkit.com/png/full/855-8551704_aaa-logo-cloud-icon-error.png", width="100px", height="100px"></img>
-                            <input type="file" class="file">
+                            <input type="file" class="file" name="file">
                 </div>
                 <span class="upload-text">Выберите или перетащите файл</span>
                 <div class="addfilebutton">
-            
-                        <input type="submit" class="mb-3 btn-primary addfilebtn" value="Отправить" />
-            
+                    <input type="submit" class="mb-3 btn-primary addfilebtn" value="Отправить" />
                 </div>
            
         </div>
