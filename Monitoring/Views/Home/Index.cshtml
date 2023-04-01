@@ -1,4 +1,5 @@
 ﻿@using Monitoring.Interfaces;
+@using System.Text.Json;
 @model GigaModel
 @{
     
@@ -126,41 +127,13 @@
                             <script>
 
                                                 label: @t.name,
-                                                data: @db.GetParamsValueFromArea(db.GetAreas().First(), t)
+                                                data: JSON.parse('@Html.Raw(JsonEncodedText.Encode(@db.GetParamsValueFromArea(db.GetAreas().First(), t).ToString()))')
                                                 borderWidth: 4,
                                                 borderColor: 'blue'
                             </script>
 
-                        },
-                        {
-                            label: 'Temperature',
-                            data: [24, 12, 5, 1, 16, 1],
-                            borderWidth: 4,
-                            borderColor: 'black'
-                            
-                        },
-                        {
-                            
-                            label: 'Max Value',
-                            fill: false,
-                            data: maxval,
-                            borderWidth: 2,
-                            borderColor: 'red',
-                            borderDash: [10, 5],
-                            pointStyle: false
-
-                        },
-                        {
-
-                            label: 'Min Value',
-                            fill: false,
-                            data: minval,
-                            borderWidth: 2,
-                            borderColor: 'red',
-                            borderDash: [10, 5],
-                            pointStyle: false
-
                         }
+                        
                         ]
                     },
                     options: {
