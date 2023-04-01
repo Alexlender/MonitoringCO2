@@ -37,9 +37,15 @@ namespace Monitoring.Services
 
             Console.WriteLine(str);
         }
-
+        public void ClearParameters()
+        {
+            db.Parameters.RemoveRange(db.Parameters.AsEnumerable());
+        }
         public void AddParameterToArea(AreaParam ap)
         {
+            if (!db.Types.AsEnumerable().Select(x => x.name).Contains(ap.type.name))
+                db.Types.Add(new Models.Type() { name = ap.type.name });
+
             db.AreaParams.Add(ap); 
             db.SaveChangesAsync();
         }
