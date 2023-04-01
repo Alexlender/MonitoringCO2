@@ -73,18 +73,12 @@ namespace Monitoring.Controllers
             List<Diarea> diareaInfo = JsonSerializer.Deserialize<List<Diarea>>(text);
             foreach (Diarea diarea in diareaInfo)
             {
-                Console.WriteLine(diarea.area.id);
-                Console.WriteLine(diarea.area.name);
-                Console.WriteLine(diarea.area.description);
+                Area area = _resourceService.GetArea(diarea.area.name);
                 foreach (var param in diarea.parameters)
                 {
-                    Console.WriteLine("{");
-                    Console.WriteLine(param.id);
-                    Console.WriteLine(param.type.id);
-                    Console.WriteLine(param.type.name);
-                    Console.WriteLine(param.num);
-                    Console.WriteLine(param.date);
-                    Console.WriteLine("}");
+                    param.area = area;
+                    _resourceService.AddParameter(param);
+
                 }
             }
             //_resourceService.AddParametersFromFile(text);

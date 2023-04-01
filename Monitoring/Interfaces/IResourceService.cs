@@ -9,6 +9,7 @@ namespace Monitoring.Interfaces
 
         void AddParametersFromFile(string str);
 
+        public Area GetArea(string name);
         void AddDiarea(Diarea diarea);
 
         void AddArea(Area Area);
