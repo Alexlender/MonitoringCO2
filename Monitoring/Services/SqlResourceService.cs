@@ -29,7 +29,7 @@ namespace Monitoring.Services
         public void AddParameter(Parameter parameter)
         {
             db.Parameters.Add(parameter);
-            AreaParam ap = db.AreaParams.Where(x => x.area == parameter.area && x.type == parameter.type).First();
+            AreaParam ap = db.AreaParams.Where(x => x.area.name == parameter.area.name).Where(x => x.type.name == parameter.type.name).First();
             if (parameter.num > ap.max || parameter.num < ap.min)
                 Console.WriteLine($"ALARM!!!!\n{parameter.type.name} = {parameter.num}");
             db.SaveChanges();
