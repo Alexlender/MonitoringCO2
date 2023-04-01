@@ -1,0 +1,43 @@
+﻿.body {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: 30% auto;
+}
+
+.graph {
+    border: 2px solid black;
+}
+
+.areas-list {
+    border: 2px solid black;
+    display: grid;
+    grid-template-rows: auto;
+}
+
+.upload-container{
+    border: 2px solid red;
+    height: auto;
+}
+
+
+#upload-container label {
+    font-weight: bold;
+}
+#upload-container label:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+
+#upload-container div {
+        position: relative;
+        z-index: 10;
+}
+
+#upload-container input[type=file] {
+        width: 0.1px;
+        height: 0.1px;
+        opacity: 0;
+        position: absolute;
+        z-index: -10;
+}
