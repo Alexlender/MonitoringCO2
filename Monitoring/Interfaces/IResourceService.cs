@@ -13,6 +13,8 @@ namespace Monitoring.Interfaces
 
         void AddArea(Area Area);
 
+        void AddParameterToArea(AreaParam ap);
+
         public List<Area> GetAreas();
         List<Parameter> GetAllParameters();
 

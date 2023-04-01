@@ -37,6 +37,13 @@ namespace Monitoring.Services
 
             Console.WriteLine(str);
         }
+
+        public void AddParameterToArea(AreaParam ap)
+        {
+            db.AreaParams.Add(ap); 
+            db.SaveChangesAsync();
+        }
+
         public List<Parameter> GetAllParameters()
         {
             return db.Parameters.ToList();

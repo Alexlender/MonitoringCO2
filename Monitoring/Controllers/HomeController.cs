@@ -37,6 +37,13 @@ namespace Monitoring.Controllers
 
         }
 
+        public IActionResult AddParameterToArea(AreaParam ap)
+        {
+            if (ModelState.IsValid)
+                _resourceService.AddArea(area);
+            return Redirect("/");
+        }
+
         public IActionResult AddArea(Area area)
         {
             if (ModelState.IsValid)

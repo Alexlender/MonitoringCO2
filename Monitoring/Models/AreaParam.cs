@@ -6,7 +6,7 @@
         public Area area { get; set; }
         public Type type { get; set; }
         public float min { get; set; }
-        public double max { get; set; }
+        public float max { get; set; }
 
     }
 }
