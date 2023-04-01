@@ -23,7 +23,7 @@ namespace Monitoring.Controllers
         public async Task AddDiarea([FromBody] Diarea diarea)
         {
             Console.WriteLine("New Diarea" +
-                $"Area: {diarea.area.Name}" +
+                $"Area: {diarea.area.name}" +
                 $"Params Count: {diarea.parameters.Count}");
             _resourceService.AddDiarea(diarea);
         }

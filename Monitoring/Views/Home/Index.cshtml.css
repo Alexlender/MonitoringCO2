@@ -62,3 +62,20 @@ img {
     cursor: pointer;
 }
 
+
+/*списьки*/
+.params {
+    overflow: hidden;
+    max-height: 0;
+    transition: 0.5s ease-out;
+}
+li:hover > .params {
+    
+    max-height: 100vh;
+    transition: 0.5s ease-in;
+}
+li {
+    cursor: default;
+    margin-top: 5px;
+    list-style-type: none;
+}

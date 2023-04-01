@@ -16,7 +16,7 @@ namespace Monitoring.Services
 
         public void AddDiarea(Diarea diarea)
         {
-            if (db.Areas.AsEnumerable().Where(a => a.Name == diarea.area.Name).ToList().Count == 1)
+            if (db.Areas.AsEnumerable().Where(a => a.name == diarea.area.name).ToList().Count == 1)
                 foreach (var p in diarea.parameters)
                 {
                     p.area = diarea.area;
@@ -37,6 +37,19 @@ namespace Monitoring.Services
 
             Console.WriteLine(str);
         }
+        public void ClearParameters()
+        {
+            db.Parameters.RemoveRange(db.Parameters.AsEnumerable());
+        }
+        public void AddParameterToArea(AreaParam ap)
+        {
+            if (!db.Types.AsEnumerable().Select(x => x.name).Contains(ap.type.name))
+                db.Types.Add(new Models.Type() { name = ap.type.name });
+
+            db.AreaParams.Add(ap); 
+            db.SaveChangesAsync();
+        }
+
         public List<Parameter> GetAllParameters()
         {
             return db.Parameters.ToList();
@@ -47,10 +60,10 @@ namespace Monitoring.Services
             return db.Areas.ToList();
         }
 
-        /*public List<Area> GetParamsByArea(Area area)
+        public List<Models.Type> GetParamsTypesByArea(Area area)
         {
-            //return db.AreaParams.AsEnumerable<AreaParam>().Select().ToList<Area>();
+            return db.AreaParams.AsEnumerable().Where(x => x.area == area).Select(x => x.type).Distinct().ToList();
         }
-        */
+        
     }
 }
