@@ -48,7 +48,7 @@ namespace Monitoring.Services
             {
                 type = db.Types.AsEnumerable().Where(x => x.name == ap.type.name).FirstOrDefault();
             }
-            Area area = db.Areas.FirstOrDefault(a => a.name == ap.area.name);
+            Area area = db.Areas.FirstOrDefault(a => a.name == ap.area.name);  
             ap.area = area;
             ap.type = type;
             db.AreaParams.Add(ap); 
