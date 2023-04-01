@@ -50,8 +50,7 @@ namespace Monitoring.Controllers
         {
             Area area = new Area() { description = gm.description, name = gm.name };
 
-            if (ModelState.IsValid)
-                _resourceService.AddArea(area);
+            _resourceService.AddArea(area);
             return Redirect("/");
         }
 
