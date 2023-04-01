@@ -16,7 +16,7 @@ namespace Monitoring.Services
 
         public void AddDiarea(Diarea diarea)
         {
-            if (db.Areas.AsEnumerable().Where(a => a.Name == diarea.area.Name).ToList().Count == 1)
+            if (db.Areas.AsEnumerable().Where(a => a.name == diarea.area.name).ToList().Count == 1)
                 foreach (var p in diarea.parameters)
                 {
                     p.area = diarea.area;

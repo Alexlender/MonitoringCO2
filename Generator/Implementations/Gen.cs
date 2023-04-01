@@ -14,8 +14,8 @@ public class Gen : IDataGenerator
 
         var data = new Dictionary<Area, List<Parameter>>();
         float pressure, wet, temperatureArea, temperatureEquip, cO2Level;
-        Area area1 = new Area() { Name = "StrongMachine" };
-        Area area2 = new Area() { Name = "RegularMachine" };
+        Area area1 = new Area() { name = "StrongMachine" };
+        Area area2 = new Area() { name = "RegularMachine" };
         pressure = (float)random.NextDouble() * 100;
         wet = (float)random.NextDouble() * 100;
         temperatureArea = (float)random.NextDouble() * 100;
