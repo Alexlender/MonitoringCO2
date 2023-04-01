@@ -6,7 +6,7 @@ using System.Text;
 
 public class Gen : IDataGenerator
 {
-    public JsonContent GenerateJson()
+    public Task<string> GenerateJson()
     {
         Random random = new Random();
 
@@ -30,6 +30,6 @@ public class Gen : IDataGenerator
         data.Add(area1, parameters);
 
         JsonContent json = JsonContent.Create(data);
-        return json;
+        return json.ReadAsStringAsync();
     }
 }

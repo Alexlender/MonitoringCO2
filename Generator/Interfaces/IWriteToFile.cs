@@ -2,6 +2,6 @@
 {
     public interface IWriteToFile
     {
-        void WriteTextToFile(string filePath, JsonContent text);
+        void WriteTextToFile(string filePath, string text);
     }
 }

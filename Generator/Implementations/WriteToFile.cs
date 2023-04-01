@@ -4,7 +4,7 @@ namespace Generator.Implementations
 {
     public class WriteToFile : IWriteToFile
     {
-        public void WriteTextToFile(string filePath, JsonContent text)
+        public void WriteTextToFile(string filePath, string text)
         {
             using (StreamWriter writer = new StreamWriter(filePath))
             {
